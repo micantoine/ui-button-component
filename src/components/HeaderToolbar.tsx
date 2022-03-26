@@ -1,14 +1,12 @@
 import { type FC } from 'react';
-import { useLocation, } from "react-router-dom";
+
+import Breadcrumb from './Breadcrumb';
 import styles from './HeaderToolbar.module.css';
 
-const Toolbar: FC = () => {
-  const loc = useLocation();
-  console.log('loc', loc);
-
+const Toolbar: FC = () => {  
   return (
     <div className={styles.toolbar}>
-      Toolbar
+      <Breadcrumb />
     </div>
   )
 }

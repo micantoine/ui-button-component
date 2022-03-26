@@ -1,0 +1,25 @@
+
+:root {
+  --breadcrumb-link-color: #777777;
+  --breadcrumb-link-color-hover: var(--text-color);
+  --breadcrumb-active-color: var(--text-color);
+}
+
+.breadcrumb {
+  display: inline-flex;
+  list-style: none;
+  font-size: 15px;
+}
+.link {
+  color: var(--breadcrumb-link-color);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: var(--breadcrumb-link-color-hover);
+}
+
+.active {
+  color: var(--breadcrumb-active-color);
+  font-weight: 700;
+}
