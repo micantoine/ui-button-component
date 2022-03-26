@@ -27,7 +27,8 @@ const HeaderToolbar: FC = () => {
         <Breadcrumb />
       </div>
       <div className={styles.actions}>
-        actions
+        <Button variant="link">Discard changes</Button>
+        <Button variant={['primary', 'small']}>Save changes</Button>
       </div>
     </div>
   )

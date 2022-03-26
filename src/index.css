@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
 :root {
+  --color-primary: #006cff;
+
   --text-color: #373737;
   --divider-color:#e6e6e6;
 
