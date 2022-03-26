@@ -5,7 +5,8 @@ export enum RouteTypes {
   MATERIAL_UI_CARD = 'MATERIAL_UI_CARD',
 }
 
-export type Routes = Record<RouteTypes, { title: string; path: string; }>
+export type Route = { title: string; path: string; };
+export type Routes = Record<RouteTypes, Route>
 
 export const routes: Routes = {
   [RouteTypes.HOME]: {
