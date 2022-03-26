@@ -2,7 +2,9 @@
 
 :root {
   --text-color: #373737;
-  --divider-color:#e6e6e6;  
+  --divider-color:#e6e6e6;
+
+  --container-gutter: 43px;
 }
 
 body {

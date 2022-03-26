@@ -5,9 +5,7 @@ import styles from './Breadcrumb.module.css';
 
 const Breadcrumb: FC = () => {
   const location = useLocation();
-  
   const breadcrumb: Route[] = [];
-
   const routeKeys = Object.keys(RouteTypes) as unknown as Array<RouteTypes>;
 
   const activeRouteKey = (url: string) => routeKeys.find(
