@@ -1,24 +1,19 @@
 import { type FC } from 'react';
 import { Link, useLocation } from "react-router-dom";
-import { routes, RouteTypes, type Route } from '../routes';
+import { getRoute, type Route } from '../routes';
 import styles from './Breadcrumb.module.css';
 
 const Breadcrumb: FC = () => {
   const location = useLocation();
   const breadcrumb: Route[] = [];
-  const routeKeys = Object.keys(RouteTypes) as unknown as Array<RouteTypes>;
-
-  const activeRouteKey = (url: string) => routeKeys.find(
-    (key) => routes[key].path === url
-  );
 
   let url = `${location.pathname}/`;
 
   while (url !== '') {
     url = url.substring(0, url.lastIndexOf('/'));
-    const key = activeRouteKey(url);
-    if (key) {
-      breadcrumb.unshift(routes[key]);
+    const route = getRoute(url);
+    if (route) {
+      breadcrumb.unshift(route);
     }
   }
   
