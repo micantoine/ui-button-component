@@ -26,3 +26,24 @@ export const routes: Routes = {
     path: '/material-ui/card'
   },
 }
+
+/**
+ * Get route information
+ * @param url the url to get the route info from
+ * @returns the route information
+ */
+export const getRoute = (url: string): Route | null => {
+  let route: Route | null = null;
+  const routeKeys = Object.keys(RouteTypes) as unknown as Array<RouteTypes>;
+
+  for (let i = 0; i < routeKeys.length; i+=1) {
+    const key = routeKeys[i];
+    const currentRoute = routes[key];
+    if (currentRoute.path === url) {
+      route = currentRoute;
+      break;
+    }
+  }
+
+  return route;
+}
