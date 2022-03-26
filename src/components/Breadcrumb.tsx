@@ -25,7 +25,7 @@ const Breadcrumb: FC = () => {
   }
   
   return (
-    <ul className={styles.breadcrumb}>
+    <ul className={styles.list}>
       {breadcrumb.map((route, index) =>
         <li key={route.path}>
           {index === breadcrumb.length - 1
