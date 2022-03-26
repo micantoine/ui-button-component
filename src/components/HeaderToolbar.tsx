@@ -1,4 +1,4 @@
-import { type FC } from 'react';
+import { type FC, ReactElement } from 'react';
 import { Link } from 'react-router-dom';
 import { routes, RouteTypes } from '../routes';
 import Button from './Button';
@@ -7,7 +7,7 @@ import Icon from './Icon';
 import styles from './HeaderToolbar.module.css';
 import DashboardIcon from '../assets/layout-medium-tile-outline.svg'; 
 
-const HeaderToolbar: FC = () => {
+const HeaderToolbar: FC<{ actions?: ReactElement }> = ({ actions }) => {
   const DashBoardLink = <Link
     to={routes[RouteTypes.HOME].path}
     title={routes[RouteTypes.HOME].title}
@@ -16,21 +16,20 @@ const HeaderToolbar: FC = () => {
   </Link>;
 
   return (
-    <div className={styles.toolbar}>
+    <header className={styles.toolbar}>
       <div className={styles.dashboard}>
         <Button
           element={DashBoardLink}
-          iconOnly
+          variant="icon"
         />
       </div>
       <div className={styles.breadcrumb}>
         <Breadcrumb />
       </div>
-      <div className={styles.actions}>
-        <Button variant="link">Discard changes</Button>
-        <Button variant={['primary', 'small']}>Save changes</Button>
-      </div>
-    </div>
+      {actions && <div className={styles.actions}>
+        {actions}
+      </div>}
+    </header>
   )
 }
 
