@@ -1,18 +1,17 @@
-import { type FC } from 'react';
+import React, { type FC } from 'react';
 import {
   Routes,
   Route,
   Outlet,
-  Link
 } from "react-router-dom";
-
-import Button from './pages/Button';
-import Card from './pages/Card';
+import { routes, RouteTypes } from './routes';
 import Home from './pages/Home';
-
 import { HeaderToolbar } from './components';
-
 import styles from './App.module.css';
+
+const MaterialUI = React.lazy(() => import('./pages/MaterialUI'));
+const Button = React.lazy(() => import('./pages/Button'));
+const Card = React.lazy(() => import('./pages/Card'));
 
 const Layout: FC = () => {
    return (
@@ -28,13 +27,30 @@ const Layout: FC = () => {
 const App: FC = () => {
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="button" element={<Button />} />
-          <Route path="card" element={ <Card />} />
+      {<Routes>
+        <Route path={routes[RouteTypes.HOME].path} element={<Home />} />
+        <Route path={routes[RouteTypes.MATERIAL_UI].path} element={<Layout />}>
+          <Route index element={
+              <React.Suspense fallback={<>...</>}>
+                <MaterialUI />
+              </React.Suspense>
+            } />
+          <Route
+            path={routes[RouteTypes.MATERIAL_UI_BUTTON].path}
+            element={
+              <React.Suspense fallback={<>...</>}>
+                <Button />
+              </React.Suspense>
+            } />
+          <Route
+            path={routes[RouteTypes.MATERIAL_UI_CARD].path}
+            element={
+              <React.Suspense fallback={<>...</>}>
+                <Card />
+              </React.Suspense>
+            } />
         </Route>
-      </Routes>
+      </Routes>}
     </div>
   );
 }
