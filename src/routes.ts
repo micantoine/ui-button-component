@@ -10,7 +10,7 @@ export type Routes = Record<RouteTypes, Route>
 
 export const routes: Routes = {
   [RouteTypes.HOME]: {
-    title: 'Home',
+    title: 'Dashboard',
     path: '/'
   },
   [RouteTypes.MATERIAL_UI]: {
