@@ -2,6 +2,7 @@
 
 :root {
   --color-primary: #006cff;
+  --color-primary-rgb: 0, 108, 255;
 
   --text-color: #373737;
   --divider-color:#e6e6e6;

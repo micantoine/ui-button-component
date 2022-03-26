@@ -4,6 +4,7 @@
   --button-background-color: transparent;
   --button-background-color-hover: rgba(0,0,0, 5%);
   --button-font-size: 14px;
+  --button-link-decoration-color: rgba(var(--button-color-rgb), 30%);
 }
 
 .button {
@@ -22,12 +23,6 @@
   background-color: var(--button-background-color-hover);
 }
 
-.link {
-  padding: 0;
-  border-bottom: 1px solid rgba(var(--button-color-rgb), 30%);
-  --button-background-color-hover: transparent;
-}
-
 .primary {
   --button-color: #ffffff;
   --button-background-color: var(--color-primary);
@@ -37,12 +32,26 @@
   opacity: 95%;
 }
 
+.link {
+  padding: 0;
+  border-bottom: 1px solid var(--button-link-decoration-color);
+  --button-background-color: transparent;
+  --button-background-color-hover: transparent;
+}
+.link:hover {
+  --button-color: var(--text-color);
+}
+.link.primary {
+  --button-color: var(--color-primary);
+  --button-link-decoration-color: rgba(var(--color-primary-rgb), 30%);
+}
+
 .small {
   padding: 5px 10px;
   --button-font-size: 12px;
 }
 
-.isIcon {
+.icon {
   padding: 0;
   display: inline-flex;
   width: 24px;
