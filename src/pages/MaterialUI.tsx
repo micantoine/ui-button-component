@@ -1,7 +1,7 @@
-import { type FC } from 'react';
+ import { type FC } from 'react';
 import { Link } from "react-router-dom";
 import { routes, RouteTypes } from '../routes';
-import PageTitle from '../components/PageTitle';
+import { PageTitle } from '../components';
 
 const MaterialUI: FC = () => {
   return (

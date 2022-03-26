@@ -2,27 +2,14 @@ import React, { type FC } from 'react';
 import {
   Routes,
   Route,
-  Outlet,
 } from "react-router-dom";
 import { routes, RouteTypes } from './routes';
 import Home from './pages/Home';
-import { HeaderToolbar } from './components';
-import styles from './App.module.css';
+import { Layout, LayoutWithFormAction } from './components';
 
 const MaterialUI = React.lazy(() => import('./pages/MaterialUI'));
 const Button = React.lazy(() => import('./pages/Button'));
 const Card = React.lazy(() => import('./pages/Card'));
-
-const Layout: FC = () => {
-   return (
-    <div>
-      <HeaderToolbar />
-      <main className={styles.main}>
-        <Outlet />
-      </main>
-    </div>
-   );
-}
 
 const App: FC = () => {
   return (
@@ -31,10 +18,12 @@ const App: FC = () => {
         <Route path={routes[RouteTypes.HOME].path} element={<Home />} />
         <Route path={routes[RouteTypes.MATERIAL_UI].path} element={<Layout />}>
           <Route index element={
-              <React.Suspense fallback={<>...</>}>
-                <MaterialUI />
-              </React.Suspense>
-            } />
+            <React.Suspense fallback={<>...</>}>
+              <MaterialUI />
+            </React.Suspense>
+          } />
+        </Route>
+        <Route element={<LayoutWithFormAction />}>
           <Route
             path={routes[RouteTypes.MATERIAL_UI_BUTTON].path}
             element={

@@ -1,17 +1,16 @@
-import { type FC } from 'react';
+import type { ReactElement, FC } from 'react';
 import { Outlet } from "react-router-dom";
-import { HeaderToolbar } from './';
+import { HeaderToolbar, MainContent } from '.';
 
-import styles from './Layout.module.css';
 
-const Layout: FC = () => {
+const Layout: FC<{ actions?: ReactElement }> = (props) => {
    return (
-    <div>
-      <HeaderToolbar />
-      <main className={styles.main}>
+    <>
+      <HeaderToolbar actions={props.actions} />
+      <MainContent>
         <Outlet />
-      </main>
-    </div>
+      </MainContent>
+    </>
    );
 }
 
