@@ -3,13 +3,30 @@
 :root {
   --color-primary: #006cff;
   --color-primary-rgb: 0, 108, 255;
+  --color-primary-contrast: #ffffff;
+
+  --color-medium-light: #777777;
+  --color-medium-light-rgb: 119, 119, 119;
+
+  --color-medium: #5e5e5e;
+  --color-medium-rgb: 94, 94, 94;
+
+  --background-color: #ffffff;
+  --background-color-rgba: 255, 255, 255;
 
   --text-color: #373737;
-  --divider-color:#e6e6e6;
+  --text-color-rgb: 55, 55, 55;
+
+  --border-color:#e6e6e6;
+  --border-color-rgb:230, 230, 230;
+
 
   --container-gutter: 43px;
 }
 
+html {
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -17,7 +34,9 @@ body {
     sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+  height: 100%;
   color: var(--text-color);
+  background-color: var(--background-color);
 }
 
 h1 {

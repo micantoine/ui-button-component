@@ -1,6 +1,6 @@
 
 :root {
-  --breadcrumb-link-color: #777777;
+  --breadcrumb-link-color: var(--color-medium-light);
   --breadcrumb-link-color-hover: var(--text-color);
   --breadcrumb-active-color: var(--text-color);
 }

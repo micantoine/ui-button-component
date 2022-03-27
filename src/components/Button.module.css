@@ -1,6 +1,6 @@
 :root {
-  --button-color: #5e5e5e;
-  --button-color-rgb: 94, 94, 94;
+  --button-color: var(--color-medium);
+  --button-color-rgb: var(--color-medium-rgb);
   --button-background-color: transparent;
   --button-background-color-hover: rgba(0,0,0, 5%);
   --button-font-size: 14px;
@@ -24,7 +24,7 @@
 }
 
 .primary {
-  --button-color: #ffffff;
+  --button-color: var(--color-primary-contrast);
   --button-background-color: var(--color-primary);
   --button-background-color-hover: var(--button-background-color);
 }
