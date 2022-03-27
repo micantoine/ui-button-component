@@ -1,12 +1,12 @@
 import { type InputHTMLAttributes, type FC } from 'react';
 import FormLabel from './FormLabel';
-import { classNames } from '../utils';
+import { classNames, kebabCase } from '../utils';
 import styles from './FormInput.module.css';
 
 const FormInput: FC<InputHTMLAttributes<{}> & {
   label?: string;
 }> = ({ className, label, id, ...props }) => {
-  const inputId = id ?? label?.toLowerCase().trim().replace(/\s/, '-');
+  const inputId = kebabCase(id ?? label);
 
   return (
     <>
