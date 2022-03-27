@@ -1,10 +1,10 @@
 import { type FC } from 'react';
-import { PageTitle } from '../components';
+import { UIPageTitle } from '../components';
 
 const Button: FC = () => {
   return (
     <>
-      <PageTitle>Button</PageTitle>
+      <UIPageTitle>Button</UIPageTitle>
     </>
   );
 }

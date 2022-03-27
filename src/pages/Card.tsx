@@ -1,9 +1,11 @@
 import { type FC } from 'react';
-import PageTitle from '../components/ComponentPageTitle';
+import UIPageTitle from '../components/UIPageTitle';
 
 const Card: FC = () => {
   return (
-    <h1>Card</h1>
+    <>
+      <UIPageTitle>Card</UIPageTitle>
+    </>
   );
 }
 

@@ -1,0 +1,8 @@
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.title > *:first-child {
+  margin-left: 12px;
+}
