@@ -1,5 +1,6 @@
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as Button } from './Button';
+export { default as FormInput } from './FormInput';
 export { default as FormLabel } from './FormLabel';
 export { default as HeaderToolbar } from './HeaderToolbar';
 export { default as Icon } from './Icon';
@@ -7,4 +8,5 @@ export { default as Layout } from './Layout';
 export { default as LayoutWithFormAction } from './LayoutWithFormAction';
 export { default as MainContent } from './MainContent';
 export { default as UIPageTitle } from './UIPageTitle';
+export { default as UIPropertiesForm } from './UIPropertiesForm';
 export { default as VisibilitySwitcher } from './VisibilitySwitcher';
