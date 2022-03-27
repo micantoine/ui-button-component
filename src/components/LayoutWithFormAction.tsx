@@ -1,10 +1,8 @@
 import { type FC } from 'react';
-import { useLocation } from 'react-router-dom';
-import { getRoute } from '../routes';
 import { Button, Layout } from '.';
 
 const LayoutWithFormAction: FC = () => {
-  const formId = 'form-component'; 
+  const formId = 'form-component';
   const actions = 
     <>
       <Button
