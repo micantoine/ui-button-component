@@ -1,5 +1,6 @@
 import { type FC } from 'react';
-import { UIPageTitle, FormLabel } from '../components';
+import UIComponent from '../models/UIComponent';
+import { UIPageTitle, UIPropertiesForm } from '../components';
 
 const Button: FC = () => {
   return (
@@ -8,12 +9,8 @@ const Button: FC = () => {
       <h2>Component preview</h2>
       todo
       
-      <section>
-
-      </section>
-      
       <h2>Properties</h2>
-      <FormLabel className='test'>Name</FormLabel>
+      <UIPropertiesForm {...new UIComponent()} />
     </>
   );
 }
