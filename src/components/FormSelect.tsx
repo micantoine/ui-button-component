@@ -11,9 +11,17 @@ export interface SelectOption {
 const FormSelect: FC<SelectHTMLAttributes<{}> & {
   label?: string;
   useEmpty?: boolean;
-  options: SelectOption[];
+  options: SelectOption[] | string[] | number[];
 }> = ({ className, label, id, options, useEmpty, ...props }) => {
   const inputId = kebabCase(id ?? label);
+
+  let optionList: SelectOption[];
+
+  if (typeof options[0] !== 'object') {
+    optionList = options.map((opt) => ({ value: opt })) as SelectOption[];
+  } else {
+    optionList = options as SelectOption[];
+  }
 
   return (
     <>
@@ -28,11 +36,10 @@ const FormSelect: FC<SelectHTMLAttributes<{}> & {
         {...props}
       >
         {useEmpty && <option></option>}
-        {options && options.map((opt) =>
+        {optionList && optionList.map((opt) =>
           <option
-            key={kebabCase(opt.value.toString())}
+            key={kebabCase(opt.value?.toString())}
             value={opt.value}
-            selected={opt.value === props.value}
           >{opt.label ?? opt.value}</option>
         )}
       </select>
