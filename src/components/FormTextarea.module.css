@@ -1,0 +1,27 @@
+:root {
+  --textarea-height: 56px;
+}
+
+.textarea {
+  display: block;
+  width: 100%;
+  height: var(--textarea-height);
+  font-size: var(--input-font-size);
+  color: var(--input-color);
+  border: 1px solid var(--input-border-color);
+  box-shadow: none;
+  appearance: none;
+  resize: none;
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+.hasLabel {
+  margin-block-start: 5px;
+}
+
+.small {
+  --textarea-height: 40px;
+}

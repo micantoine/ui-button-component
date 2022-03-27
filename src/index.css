@@ -23,9 +23,16 @@
 
   --border-color:#e6e6e6;
   --border-color-rgb:230, 230, 230;
-  
+
+  /* Gutter */
   --gutter: 20px;
   --gutter-large: 43px;
+
+  /* Form */
+  --input-color: var(--color-medium);
+  --input-background-color: var(--background-color);
+  --input-font-size: 14px;
+  --input-border-color: var(--border-color);  
 }
 
 html {
