@@ -1,8 +1,12 @@
-import { LabelHTMLAttributes, type FC } from 'react';
+import type { LabelHTMLAttributes, FC } from 'react';
+import { classNames } from '../utils';
+import styles from './FormLabel.module.css';
 
-const FormLabel: FC<LabelHTMLAttributes<{}>> = (props) => {
+const FormLabel: FC<LabelHTMLAttributes<{}>> = ({ className, ...props }) => {
   return (
-    <label {...props}>{props.children}</label>
+    <label className={classNames([styles.label, className])} {...props}>
+      {props.children}
+    </label>
   );
 }
 
