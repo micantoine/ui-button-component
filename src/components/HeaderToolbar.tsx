@@ -22,7 +22,7 @@ const HeaderToolbar: FC<HTMLAttributes<{}> & {
   return (
     <header className={classNames([
       styles.toolbar,
-      className ?? null
+      className
     ])} {...props}>
       <div className={styles.dashboard}>
         <Button

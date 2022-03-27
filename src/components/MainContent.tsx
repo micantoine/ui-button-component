@@ -6,7 +6,7 @@ const MainContent: FC<HTMLAttributes<{}>> = ({ className, ...props }) => {
    return (
       <main className={classNames([
          styles.main,
-         className ?? null
+         className
        ])} {...props}>
         {props.children}
       </main>

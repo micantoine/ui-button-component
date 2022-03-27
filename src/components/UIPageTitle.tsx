@@ -16,7 +16,7 @@ const UIPageTitle: FC<HTMLAttributes<{}>> = ({ className, ...props }) => {
   return (
     <h1 className={classNames([
       styles.title,
-      className ?? null
+      className
     ])} {...props}>
       {props.children}
       <VisibilitySwitcher show={true} onChange={onVisibilityChange} />
