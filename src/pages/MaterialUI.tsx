@@ -1,12 +1,12 @@
  import { type FC } from 'react';
 import { Link } from "react-router-dom";
 import { routes, RouteTypes } from '../routes';
-import { PageTitle, Button } from '../components';
+import { Button } from '../components';
 
 const MaterialUI: FC = () => {
   return (
     <>
-      <PageTitle>{routes[RouteTypes.MATERIAL_UI].title}</PageTitle>
+      <h1>{routes[RouteTypes.MATERIAL_UI].title}</h1>
       <ul>
         <li>
           <Button color="primary" variant="link" element={

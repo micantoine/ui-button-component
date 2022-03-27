@@ -1,9 +1,9 @@
 import { type FC } from 'react';
-import PageTitle from '../components/PageTitle';
+import PageTitle from '../components/ComponentPageTitle';
 
 const Card: FC = () => {
   return (
-    <PageTitle>Card</PageTitle>
+    <h1>Card</h1>
   );
 }
 
