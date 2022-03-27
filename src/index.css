@@ -19,9 +19,9 @@
 
   --border-color:#e6e6e6;
   --border-color-rgb:230, 230, 230;
-
-
-  --container-gutter: 43px;
+  
+  --gutter: 20px;
+  --gutter-large: 43px;
 }
 
 html {
