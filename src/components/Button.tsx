@@ -12,6 +12,7 @@ const Button: FC<{
   variant?: ButtonVariant | ButtonVariant[];
   type?: 'button' | 'submit' | 'reset';
   form?: string;
+  onClick?: () => void;
 }> = (props) => {
   const classes = [styles.button]
 
@@ -38,6 +39,7 @@ const Button: FC<{
       className={classNames(classes)}
       type={props.type ?? 'button'}
       form={props.form}
+      onClick={props.onClick}
     >{props.children}</button>;
 
   return (
