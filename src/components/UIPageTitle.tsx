@@ -1,11 +1,10 @@
-import { type FC } from 'react';
+import type { HTMLAttributes, FC } from 'react';
 import { VisibilitySwitcher, Icon, Button } from '.';
+import styles from './UIPageTitle.module.css';
+import { classNames } from '../utils';
 import Gear from '../assets/gear.svg';
 
-import styles from './UIPageTitle.module.css';
-
-const UIPageTitle: FC = (props) => {
-
+const UIPageTitle: FC<HTMLAttributes<{}>> = ({ className, ...props }) => {
   const onVisibilityChange = (status: boolean): void => {
     console.log('visibility', status);
   }
@@ -15,7 +14,10 @@ const UIPageTitle: FC = (props) => {
   }
 
   return (
-    <h1 className={styles.title}>
+    <h1 className={classNames([
+      styles.title,
+      className ?? null
+    ])} {...props}>
       {props.children}
       <VisibilitySwitcher show={true} onChange={onVisibilityChange} />
       <Button variant="icon" onClick={onSettings}>

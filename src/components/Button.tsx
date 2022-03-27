@@ -1,18 +1,14 @@
-import React, { type FC } from 'react';
+import React, { type ButtonHTMLAttributes, type FC } from 'react';
 import { classNames } from '../utils';
 import styles from './Button.module.css';
 
 type ButtonVariant = 'link' | 'icon' ;
 
-const Button: FC<{
-  className?: string;
+const Button: FC<ButtonHTMLAttributes<{}> & {
   color?: 'primary',
   size?: 'small',
   element?: JSX.Element;
   variant?: ButtonVariant | ButtonVariant[];
-  type?: 'button' | 'submit' | 'reset';
-  form?: string;
-  onClick?: () => void;
 }> = (props) => {
   const classes = [styles.button]
 

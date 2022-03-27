@@ -1,9 +1,13 @@
-import { type FC } from 'react';
+import { HTMLAttributes, type FC } from 'react';
+import { classNames } from '../utils';
 import styles from './MainContent.module.css';
 
-const MainContent: FC = (props) => {
+const MainContent: FC<HTMLAttributes<{}>> = ({ className, ...props }) => {
    return (
-      <main className={styles.main}>
+      <main className={classNames([
+         styles.main,
+         className ?? null
+       ])} {...props}>
         {props.children}
       </main>
    );
