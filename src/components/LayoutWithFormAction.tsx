@@ -4,9 +4,7 @@ import { getRoute } from '../routes';
 import { Button, Layout } from '.';
 
 const LayoutWithFormAction: FC = () => {
-  const activeRoute = getRoute(useLocation().pathname);
-  const formId = `form${activeRoute?.path.replace(/\//g, '-')}`;
-  
+  const formId = 'form-component'; 
   const actions = 
     <>
       <Button
