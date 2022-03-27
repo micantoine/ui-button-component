@@ -5,6 +5,10 @@
   --color-primary-rgb: 0, 108, 255;
   --color-primary-contrast: #ffffff;
 
+  --color-danger: #df330d;
+  --color-danger-rgb: rgb(223, 51, 13);
+  --color-danger-contrast: #ffffff;
+
   --color-medium-light: #777777;
   --color-medium-light-rgb: 119, 119, 119;
 

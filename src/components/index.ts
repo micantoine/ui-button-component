@@ -7,6 +7,7 @@ export { default as Icon } from './Icon';
 export { default as Layout } from './Layout';
 export { default as LayoutWithFormAction } from './LayoutWithFormAction';
 export { default as MainContent } from './MainContent';
+export { default as Tip } from './Tip';
 export { default as UIPageTitle } from './UIPageTitle';
 export { default as UIPropertiesForm } from './UIPropertiesForm';
 export { default as VisibilitySwitcher } from './VisibilitySwitcher';

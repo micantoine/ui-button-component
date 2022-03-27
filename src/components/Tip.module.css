@@ -1,0 +1,21 @@
+:root {
+  --tip-color: #848484;
+  --tip-font-size: 14px;
+}
+
+.tip {
+  margin-block-start: 1px;
+  margin-block-end: 1px;
+  display: block;
+  line-height: 16px;
+  font-size: var(--tip-font-size);
+  color: var(--tip-color);
+}
+
+.small {
+  --tip-font-size: 12px;
+}
+
+.error {
+  --tip-color: var(--color-danger);
+}
