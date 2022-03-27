@@ -4,18 +4,19 @@ import HiddenIcon from '../assets/visibility-hidden.svg';
 import VisibleIcon from '../assets/visibility-visible.svg'; 
 
 const VisibilitySwitcher: FC<{
-  status: boolean,
+  show: boolean,
+  className?: string,
   onChange: (status: boolean) => void
-}> = ({ status, onChange }) => {
-  const [visible, setVisibility] = useState(status);
+}> = ({ show, onChange, className }) => {
+  const [visible, setVisibility] = useState(show);
 
-  const switchStatus = (): void => {
+  const handleClick = (): void => {
     setVisibility(!visible);
-    onChange(visible);
+    onChange(!visible);
   }
 
   return (
-    <Button variant="icon" onClick={switchStatus}>
+    <Button variant="icon" className={className} onClick={handleClick}>
       <Icon src={visible ? VisibleIcon : HiddenIcon} />
     </Button>
   );
