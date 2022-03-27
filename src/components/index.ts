@@ -2,6 +2,7 @@ export { default as Breadcrumb } from './Breadcrumb';
 export { default as Button } from './Button';
 export { default as FormInput } from './FormInput';
 export { default as FormLabel } from './FormLabel';
+export { default as FormSelect } from './FormSelect';
 export { default as FormTextarea } from './FormTextarea';
 export { default as HeaderToolbar } from './HeaderToolbar';
 export { default as Icon } from './Icon';
