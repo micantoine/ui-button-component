@@ -1,4 +1,4 @@
-import { type ChangeEvent, useState, type FC } from 'react';
+import { type ChangeEvent, useState, useEffect, type FC } from 'react';
 import { FormInput, FormTextarea, FormSelect, Tip } from '.';
 import * as UI from '../models/UIComponent';
 
@@ -9,8 +9,14 @@ type ChangeEventType = HTMLInputElement|HTMLTextAreaElement|HTMLSelectElement;
 const UIComponentProperties: FC<{
   data: UI.Properties;
   onChange: (payload: UI.Properties) => void;
-}> = (props) => {
-  const [properties, setProperties] = useState(props.data);
+}> = ({data, ...props }) => {
+  const [properties, setProperties] = useState({...data});
+
+  useEffect(() => {
+    if (data !== properties) {
+      setProperties(data);
+    } 
+  }, [data]);
 
   const handleChange = (ev: ChangeEvent<ChangeEventType>): void => {
     const value = ev.target.value;

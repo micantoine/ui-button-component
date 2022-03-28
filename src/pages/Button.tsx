@@ -3,6 +3,9 @@ import UIComponent from '../models/UIComponent';
 import { UIPageTitle, UIComponentForm } from '../components';
 
 const Button: FC = () => {
+  const handleSubmit = (payload: UIComponent) => {
+    console.log('handleSubmit', payload);
+  }
   return (
     <>
       <UIPageTitle>Button</UIPageTitle>
@@ -10,7 +13,8 @@ const Button: FC = () => {
       todo
       
       <h2>Properties</h2>
-      <UIComponentForm {...new UIComponent()} />
+
+      <UIComponentForm data={new UIComponent()} onSubmit={handleSubmit} />
     </>
   );
 }
