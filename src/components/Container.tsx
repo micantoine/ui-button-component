@@ -1,12 +1,16 @@
-import { HTMLAttributes, type FC } from 'react';
+import React, { HTMLAttributes, type FC } from 'react';
 import { classNames } from '../utils';
 import styles from './Container.module.css';
 
+type ContainerSpacing = 'small' | 'medium';
 interface ContainerProps {
-  spacing?: 'small' | 'medium';
   horizontal?: boolean;
   vertical?: boolean;
-  size?: 'small' | 'medium' | 'large';
+  spacing?: ContainerSpacing;
+  xSpacing?: ContainerSpacing;
+  ySpacing?: ContainerSpacing;
+  size?: 'sm' | 'md' | 'lg';
+  tagName?: keyof HTMLElementTagNameMap
 }
 
 const Container: FC<HTMLAttributes<{}> & ContainerProps> = ({
@@ -14,32 +18,46 @@ const Container: FC<HTMLAttributes<{}> & ContainerProps> = ({
   vertical = true,
   horizontal = true,
   spacing = 'medium',
+  xSpacing,
+  ySpacing,
   size,
+  tagName = 'div',
+  children,
   ...props
 }) => {
   const classes = [className];
 
-  if (vertical && horizontal) {
-    classes.push(styles.containerXY);
-  } else if (vertical) {
+  if (vertical) {
     classes.push(styles.containerY);
-  } else if (horizontal) {
+  }
+  if (horizontal) {
     classes.push(styles.containerX);
   }
 
   if (spacing) {
-    classes.push(styles[`spacing-${spacing}`])
+    classes.push(styles[`spacing-${spacing}`]);
+  }
+  if (xSpacing) {
+    classes.push(styles[`spacingX-${spacing}`]);
+  }
+  if (ySpacing) {
+    classes.push(styles[`spacingY-${spacing}`]);
   }
 
   if (size) {
     classes.push(styles[size]);
   }
 
-  return (
-    <div className={classNames(classes)} {...props}>
-      {props.children}
-    </div>
+  const element = React.createElement(
+    tagName,
+    {
+      className: classNames(classes),
+      ...props
+    },
+    children
   );
+
+  return element;
 }
 
 export default Container;
