@@ -38,10 +38,10 @@ const Container: FC<HTMLAttributes<{}> & ContainerProps> = ({
     classes.push(styles[`spacing-${spacing}`]);
   }
   if (xSpacing) {
-    classes.push(styles[`spacingX-${spacing}`]);
+    classes.push(styles[`spacingX-${xSpacing}`]);
   }
   if (ySpacing) {
-    classes.push(styles[`spacingY-${spacing}`]);
+    classes.push(styles[`spacingY-${ySpacing}`]);
   }
 
   if (size) {
