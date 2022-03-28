@@ -6,12 +6,15 @@
   --button-background-color: transparent;
   --button-background-color-hover: rgba(0,0,0, 5%);
   --button-font-size: 14px;
+  --button-font-weight: 700;
 }
 
 .button {
   padding: 8px 20px;
   appearance: none;
   font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: 18px;
   text-decoration: none;
   color: var(--button-color);
   background-color: var(--button-background-color);
@@ -37,6 +40,7 @@
   --button-color: var(--link-color);
   --button-background-color: transparent;
   --button-background-color-hover: transparent;
+  --button-font-weight: 400;
   padding: 0;
   border-bottom: 1px solid var(--link-underline-color);
 }
@@ -50,6 +54,7 @@
 
 .small {
   padding: 5px 10px;
+  --button-font-weight: 400;
   --button-font-size: 12px;
 }
 
