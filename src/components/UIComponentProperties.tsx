@@ -2,24 +2,31 @@ import { type ChangeEvent, useState, type FC } from 'react';
 import { FormInput, FormTextarea, FormSelect, Tip } from '.';
 import * as UI from '../models/UIComponent';
 
-import styles from './UIPropertiesForm.module.css';
+import styles from './UIComponentProperties.module.css';
 
-const UIPropertiesForm: FC<UI.Properties> = (props) => {
-  const [properties, setProperties] = useState(props);
+type ChangeEventType = HTMLInputElement|HTMLTextAreaElement|HTMLSelectElement;
 
-  const handleChange = (ev: ChangeEvent<HTMLInputElement|HTMLTextAreaElement|HTMLSelectElement>): void => {
+const UIComponentProperties: FC<{
+  data: UI.Properties;
+  onChange: (payload: UI.Properties) => void;
+}> = (props) => {
+  const [properties, setProperties] = useState(props.data);
+
+  const handleChange = (ev: ChangeEvent<ChangeEventType>): void => {
     const value = ev.target.value;
     const name = ev.target.name;
 
-    setProperties({
+    const newValue = {
       ...properties,
       [name]: value,
-    });
+    };
+
+    setProperties(newValue);
+    props.onChange(newValue);
   }
 
   return (
-    <form>
-
+    <>
       <div className={styles.group}>
         <FormInput
           label="Property name"
@@ -88,8 +95,8 @@ const UIPropertiesForm: FC<UI.Properties> = (props) => {
           onChange={handleChange}
         />
       </div>
-    </form>
+    </>
   );
 }
 
-export default UIPropertiesForm;
+export default UIComponentProperties;

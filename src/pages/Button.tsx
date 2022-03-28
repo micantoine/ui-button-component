@@ -1,6 +1,6 @@
 import { type FC } from 'react';
 import UIComponent from '../models/UIComponent';
-import { UIPageTitle, UIPropertiesForm } from '../components';
+import { UIPageTitle, UIComponentForm } from '../components';
 
 const Button: FC = () => {
   return (
@@ -10,7 +10,7 @@ const Button: FC = () => {
       todo
       
       <h2>Properties</h2>
-      <UIPropertiesForm {...new UIComponent()} />
+      <UIComponentForm {...new UIComponent()} />
     </>
   );
 }

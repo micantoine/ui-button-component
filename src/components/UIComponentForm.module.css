@@ -1,0 +1,8 @@
+.actions {
+  display: block;
+  text-align: right;
+}
+
+.actions *:first-child {
+  margin-right: 16px;
+}
