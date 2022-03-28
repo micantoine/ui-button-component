@@ -1,10 +1,11 @@
 :root {
   --button-color: var(--color-medium);
   --button-color-rgb: var(--color-medium-rgb);
+  --button-color-hover: var(--button-color);
+  --button-color-hover-rgba: var(--button-color-rgb);
   --button-background-color: transparent;
   --button-background-color-hover: rgba(0,0,0, 5%);
   --button-font-size: 14px;
-  --button-link-decoration-color: rgba(var(--button-color-rgb), 30%);
 }
 
 .button {
@@ -33,17 +34,18 @@
 }
 
 .link {
-  padding: 0;
-  border-bottom: 1px solid var(--button-link-decoration-color);
+  --button-color: var(--link-color);
   --button-background-color: transparent;
   --button-background-color-hover: transparent;
+  padding: 0;
+  border-bottom: 1px solid var(--link-underline-color);
 }
 .link:hover {
-  --button-color: var(--text-color);
+  --button-color: var(--link-hover-color);
 }
 .link.primary {
   --button-color: var(--color-primary);
-  --button-link-decoration-color: rgba(var(--color-primary-rgb), 30%);
+  --link-underline-color: rgba(var(--color-primary-rgb), 30%);
 }
 
 .small {

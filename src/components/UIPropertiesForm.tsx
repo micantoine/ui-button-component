@@ -75,6 +75,7 @@ const UIPropertiesForm: FC<UI.Properties> = (props) => {
           value={properties.options}
           onChange={handleChange}
         />
+        <Tip size="small">(list options sepafared by comma)</Tip>
       </div>
 
       <div className={styles.group}>
