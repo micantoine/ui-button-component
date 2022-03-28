@@ -1,5 +1,6 @@
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as Button } from './Button';
+export { default as Container } from './Container';
 export { default as FormInput } from './FormInput';
 export { default as FormLabel } from './FormLabel';
 export { default as FormSelect } from './FormSelect';
