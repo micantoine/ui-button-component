@@ -1,5 +1,5 @@
 import { useState, type FC, FormEvent } from 'react';
-import { Button, Container, UIComponentProperties } from '.';
+import { Button, Container, UIComponentPropertiesFields } from '.';
 import * as UI from '../models/UIComponent';
 
 import styles from './UIComponentForm.module.css';
@@ -28,7 +28,7 @@ const UIPropertiesForm: FC<{
   return (
     <form onSubmit={handleSubmit}>
       <Container ySpacing="small" size="md">
-        <UIComponentProperties data={currentData} onChange={handleChange} />
+        <UIComponentPropertiesFields data={currentData} onChange={handleChange} />
 
         <div className={styles.actions}>
           <Button variant="link" onClick={handleCancel}>Cancel</Button>

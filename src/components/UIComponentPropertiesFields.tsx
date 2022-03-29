@@ -2,11 +2,11 @@ import { type ChangeEvent, useState, useEffect, type FC } from 'react';
 import { FormInput, FormTextarea, FormSelect, Tip } from '.';
 import * as UI from '../models/UIComponent';
 
-import styles from './UIComponentProperties.module.css';
+import styles from './UIComponentPropertiesFields.module.css';
 
 type ChangeEventType = HTMLInputElement|HTMLTextAreaElement|HTMLSelectElement;
 
-const UIComponentProperties: FC<{
+const UIComponentPropertiesFields: FC<{
   data: UI.Properties;
   onChange: (payload: UI.Properties) => void;
 }> = ({data, ...props }) => {
@@ -106,4 +106,4 @@ const UIComponentProperties: FC<{
   );
 }
 
-export default UIComponentProperties;
+export default UIComponentPropertiesFields;
