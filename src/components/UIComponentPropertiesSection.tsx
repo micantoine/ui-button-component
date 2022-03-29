@@ -17,7 +17,7 @@ const UIComponentPropertiesSection: FC<{
   }
 
   return (
-    <>
+    <section>
       <h2>
         Properties
         <Button
@@ -35,7 +35,9 @@ const UIComponentPropertiesSection: FC<{
         onSubmit={handleSubmit}
         onCancel={handleCancel}
       />}
-    </>
+
+      {props.children}
+    </section>
   );
 }
 

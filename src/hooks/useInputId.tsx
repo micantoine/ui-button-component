@@ -8,7 +8,7 @@ import { kebabCase } from '../utils';
  * @param param0.label the input label 
  * @returns a clean id string
  */
-export const useInputId = ({id, label}: {id?: string, label?: string}): string | undefined => {
-  const inputId = useMemo(() => id || kebabCase(label), [id, label]);
+export const useInputId = ({id, label}: {id?: string, label?: string}): string => {
+  const inputId = useMemo(() => kebabCase(`${id ?? ''}${label ?? ''}`), [id, label]);
   return inputId;
 }

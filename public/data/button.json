@@ -1,3 +1,11 @@
-{
-  "data" : "yes"
-}
+[
+  {
+    "id": 1,
+    "name": "Color",
+    "displayName": "",
+    "description": "",
+    "type": "one of",
+    "options": "default, inherit, primary, secondary",
+    "defaultValue": "primary"
+  }
+]

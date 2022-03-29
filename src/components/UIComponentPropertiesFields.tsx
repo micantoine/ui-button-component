@@ -1,4 +1,3 @@
-import { type } from '@testing-library/user-event/dist/type';
 import { type ChangeEvent, useState, useEffect, type FC } from 'react';
 import { FormInput, FormTextarea, FormSelect, FormToggle, Tip } from '.';
 import * as UI from '../models/UIComponent';
@@ -11,6 +10,7 @@ const UIComponentPropertiesFields: FC<{
   data: UI.Properties;
   onChange: (payload: UI.Properties) => void;
 }> = ({data, ...props }) => {
+  const dataId = data.id?.toString();
   const [properties, setProperties] = useState({...data});
   const propertyOneOfValues = Object.values(UI.PropertyOneOf) as string[];
   const propertyNodeValues = Object.values(UI.PropertyNode) as string[];
@@ -49,6 +49,7 @@ const UIComponentPropertiesFields: FC<{
     <>
       <div className={styles.group}>
         <FormInput
+          id={dataId}
           label="Property name"
           name="name"
           value={properties.name}
@@ -59,6 +60,7 @@ const UIComponentPropertiesFields: FC<{
 
       <div className={styles.group}>
         <FormInput
+          id={dataId}
           label="Display name"
           name="displayName"
           value={properties.displayName}
@@ -68,6 +70,7 @@ const UIComponentPropertiesFields: FC<{
 
       <div className={styles.group}>
         <FormTextarea
+          id={dataId}
           label="Description"
           name="description"
           value={properties.description}
@@ -76,6 +79,7 @@ const UIComponentPropertiesFields: FC<{
 
       <div className={styles.group}>
         <FormSelect
+          id={dataId}
           label="Property type"
           name="type"
           value={properties.type}
@@ -88,6 +92,7 @@ const UIComponentPropertiesFields: FC<{
       {properties.type !== UI.PropertyType.Boolean &&
         <div className={styles.group}>
           <FormSelect
+            id={dataId}
             label="Property control"
             name="control"
             value={properties.control}
@@ -102,6 +107,7 @@ const UIComponentPropertiesFields: FC<{
       {properties.type === UI.PropertyType.Node && properties.control === UI.PropertyNode.Input &&
         <div className={styles.group}>
           <FormInput
+            id={dataId}
             label="Default value"
             name="defaultValue"
             value={properties.defaultValue}
@@ -113,6 +119,7 @@ const UIComponentPropertiesFields: FC<{
       {properties.type === UI.PropertyType.Node && properties.control === UI.PropertyNode.Textarea &&
         <div className={styles.group}>
           <FormTextarea
+            id={dataId}
             label="Default value"
             name="defaultValue"
             size="small"
@@ -125,6 +132,7 @@ const UIComponentPropertiesFields: FC<{
       {properties.type === UI.PropertyType.OneOf && <>
         <div className={styles.group}>
           <FormTextarea
+            id={dataId}
             label="Options"
             name="options"
             size="small"
@@ -135,6 +143,7 @@ const UIComponentPropertiesFields: FC<{
         </div>
         <div className={styles.group}>
           <FormSelect
+            id={dataId}
             label="Default value"
             name="defaultValue"
             useEmpty={properties.options.length > 0}
