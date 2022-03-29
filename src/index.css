@@ -39,6 +39,12 @@
   --input-border-color: var(--border-color);  
 }
 
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
