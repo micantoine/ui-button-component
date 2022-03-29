@@ -21,6 +21,7 @@
 .link {
   color: var(--breadcrumb-link-color);
   text-decoration: none;
+  border-bottom: none;
 }
 .link:hover {
   color: var(--breadcrumb-link-color-hover);

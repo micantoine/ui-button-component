@@ -38,7 +38,8 @@ const UIComponentProperties: FC<{
           label="Property name"
           name="name"
           value={properties.name}
-          onChange={handleChange} />
+          onChange={handleChange}
+        />
         <Tip size="small">(name of the property given in code)</Tip>
       </div>
 
