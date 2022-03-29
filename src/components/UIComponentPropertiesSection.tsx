@@ -1,4 +1,4 @@
-import { useEffect, useState, type FC } from 'react';
+import { useState, type FC } from 'react';
 import * as UI from '../models/UIComponent';
 import { UIComponentForm, Button, Icon } from '../components';
 import Plus from '../assets/plus.svg';

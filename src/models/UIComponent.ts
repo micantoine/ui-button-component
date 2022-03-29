@@ -1,25 +1,29 @@
 
 export enum PropertyType {
-  None = '',
   Boolean = 'boolean',
   Node = 'node',
   OneOf = 'one of',
 }
 
-export enum PropertyControl {
-  None = '',
-  Input = 'input',
-  Radio = 'radio',
+export enum PropertyOneOf {
   Select = 'select',
-  Textarea = 'textarea',
+  Radio = 'radio',
 }
 
+export enum PropertyNode {
+  Input = 'input',
+  Textarea = 'textarea',
+}
+export const PropertyControl = {
+  ...PropertyOneOf,
+  ...PropertyNode
+};
 export class Properties {
   public name: string = '';
   public displayName: string = '';
   public description: string = '';
-  public type: PropertyType = PropertyType.None;
-  public control: PropertyControl = PropertyControl.None;
+  public type: PropertyType |'' = '';
+  public control: PropertyNode | PropertyOneOf | '' = '';
   public options: string = '';
   public defaultValue: string = '';
 }

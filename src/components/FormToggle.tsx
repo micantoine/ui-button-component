@@ -1,4 +1,4 @@
-import { type ChangeEvent, type FC, useState } from 'react';
+import { type FC, useState } from 'react';
 import FormLabel from './FormLabel';
 import { classNames } from '../utils';
 import styles from './FormToggle.module.css';
@@ -9,12 +9,13 @@ const FormInput: FC<{
   value?: boolean;
   trueValue?: string;
   falseValue?: string;
-}> = ({ label, name, trueValue, falseValue, value = false }) => {
+  onChange?: (payload: boolean) => void;
+}> = ({ label, name, trueValue, falseValue, value = false, onChange }) => {
   const [status, setStatus] = useState(value)
 
-  const handleChange = ( ev: ChangeEvent<HTMLInputElement>) => {
-    console.log(ev);
-    setStatus(ev.target.checked);
+  const changeStatus = (state: boolean) => {
+    setStatus(state);
+    if (onChange) onChange(state);
   }
 
   return (
@@ -27,12 +28,17 @@ const FormInput: FC<{
         <input
           className={styles.inputTrue}
           type="radio"
-          name={name ?? 'toggle'}
-          onChange={handleChange}
-          checked={status}
+          name={name}
+          onChange={() => changeStatus(true)}
+          defaultChecked={status}
         />
         <label className={styles.labelTrue}>{trueValue ?? 'True'}</label>
-        <input className={styles.inputFalse} type="radio" name={name ?? 'toggle'} defaultChecked={!status} />
+        <input
+          className={styles.inputFalse}
+          type="radio"
+          name={name}
+          onChange={() => changeStatus(false)}
+          defaultChecked={!status} />
         <label className={styles.labelFalse}>{falseValue ?? 'False'}</label>
       </div>
     </>

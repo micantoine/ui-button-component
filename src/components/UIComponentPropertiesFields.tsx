@@ -1,5 +1,5 @@
 import { type ChangeEvent, useState, useEffect, type FC } from 'react';
-import { FormInput, FormTextarea, FormSelect, Tip } from '.';
+import { FormInput, FormTextarea, FormSelect, FormToggle, Tip } from '.';
 import * as UI from '../models/UIComponent';
 
 import styles from './UIComponentPropertiesFields.module.css';
@@ -13,9 +13,8 @@ const UIComponentPropertiesFields: FC<{
   const [properties, setProperties] = useState({...data});
 
   useEffect(() => {
-    if (data !== properties) {
-      setProperties(data);
-    } 
+    setProperties(data);
+    console.log('props updated');
   }, [data]);
 
   const handleChange = (ev: ChangeEvent<ChangeEventType>): void => {
@@ -66,22 +65,24 @@ const UIComponentPropertiesFields: FC<{
           name="type"
           value={properties.type}
           options={Object.values(UI.PropertyType)}
+          useEmpty
           onChange={handleChange}
         />
       </div>
 
-      <div className={styles.group}>
+      {properties.type !== UI.PropertyType.Boolean && <div className={styles.group}>
         <FormSelect
           label="Property control"
           name="control"
           value={properties.control}
           options={Object.values(UI.PropertyControl)}
+          useEmpty
           onChange={handleChange}
         />
         <Tip size="small">(type of control displayed in editor's properties panel.  <a href="/#" title="Learn more">Learn more</a> about control types)</Tip>
-      </div>
+      </div>}
       
-      <div className={styles.group}>
+      {(Object.values(UI.PropertyOneOf) as string[]).includes(properties.control) && <div className={styles.group}>
         <FormTextarea
           label="Options"
           name="options"
@@ -90,9 +91,9 @@ const UIComponentPropertiesFields: FC<{
           onChange={handleChange}
         />
         <Tip size="small">(list options sepafared by comma)</Tip>
-      </div>
+      </div>}
 
-      <div className={styles.group}>
+      {(Object.values(UI.PropertyNode) as string[]).includes(properties.control) &&<div className={styles.group}>
         <FormSelect
           label="Default value"
           name="defaultValue"
@@ -100,6 +101,13 @@ const UIComponentPropertiesFields: FC<{
           value={properties.defaultValue}
           options={(properties.options ?? '').split(',')}
           onChange={handleChange}
+        />
+      </div>}
+      <div className={styles.group}>
+        <FormToggle
+          label="Default value"
+          name="defaultValue"
+          value={properties.defaultValue.length > 0}
         />
       </div>
     </>
