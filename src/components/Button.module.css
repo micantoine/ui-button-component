@@ -51,6 +51,9 @@
 .link.withIcon {
   border-bottom: none;
 }
+.link.withIcon > svg {
+  vertical-align: 1px;
+}
 .link.withIcon .label {
   border-bottom: 1px solid var(--link-underline-color);
 }

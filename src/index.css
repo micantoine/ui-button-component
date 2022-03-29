@@ -68,6 +68,9 @@ h2 {
   font-weight: 700;
   line-height: 32px;
 }
+h2 > *:first-child {
+  margin-inline-start: 10px;
+}
 
 a {
   color: var(--link-color);
