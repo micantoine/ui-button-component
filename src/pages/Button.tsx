@@ -1,8 +1,7 @@
 import { useEffect, useState, type FC } from 'react';
 import { Api, ApiRouteTypes } from '../middlewares/Api';
 import UIComponent from '../models/UIComponent';
-import { UIPageTitle, UIComponentForm, Button, Icon } from '../components';
-import Plus from '../assets/plus.svg';
+import { UIPageTitle, UIComponentPropertiesSection, } from '../components';
 
 const ButtonPage: FC = () => {
   const [data, setData] = useState<UIComponent[]>([]);
@@ -20,12 +19,8 @@ const ButtonPage: FC = () => {
     fetchData();
   }, []);
 
-  const handleSubmit = (payload: UIComponent): void => {
-    console.log('handleSubmit', payload);
-  }
-
-  const handleCancel = (): void => {
-    console.log('handle Cancel');
+  const handleNew = (payload: UIComponent): void => {
+    console.log('handleNew created property', payload);
   }
 
   return (
@@ -33,20 +28,8 @@ const ButtonPage: FC = () => {
       <UIPageTitle>Button</UIPageTitle>
       <h2>Component preview</h2>
       @todo
-      
-      <h2>
-        Properties
-        <Button color="primary" variant="link">
-          <Icon src={Plus} />
-          Add new property
-        </Button>
-      </h2>
 
-      <UIComponentForm
-        data={new UIComponent()}
-        onSubmit={handleSubmit}
-        onCancel={handleCancel}
-      />
+      <UIComponentPropertiesSection onCreate={handleNew} />
     </>
   );
 }
