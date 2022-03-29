@@ -37,7 +37,7 @@ const FormSelect: FC<SelectHTMLAttributes<{}> & {
         id={inputId}
         {...props}
       >
-        {useEmpty && <option></option>}
+        {useEmpty && <option disabled></option>}
         {optionList && optionList.map((opt) =>
           <option
             key={kebabCase(opt.value?.toString())}
