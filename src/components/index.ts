@@ -5,6 +5,7 @@ export { default as FormInput } from './FormInput';
 export { default as FormLabel } from './FormLabel';
 export { default as FormSelect } from './FormSelect';
 export { default as FormTextarea } from './FormTextarea';
+export { default as FormToggle } from './FormToggle';
 export { default as HeaderToolbar } from './HeaderToolbar';
 export { default as Icon } from './Icon';
 export { default as Layout } from './Layout';
