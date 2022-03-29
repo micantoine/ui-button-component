@@ -1,5 +1,6 @@
-import type { FC, SelectHTMLAttributes } from 'react';
+import { type FC, SelectHTMLAttributes } from 'react';
 import FormLabel from './FormLabel';
+import { useInputId } from '../hooks';
 import { classNames, kebabCase } from '../utils';
 import styles from './FormSelect.module.css';
 
@@ -13,7 +14,8 @@ const FormSelect: FC<SelectHTMLAttributes<{}> & {
   useEmpty?: boolean;
   options: SelectOption[] | string[] | number[];
 }> = ({ className, label, id, options, useEmpty, ...props }) => {
-  const inputId = kebabCase(id ?? label);
+
+  const inputId = useInputId({id, label});
 
   let optionList: SelectOption[];
 

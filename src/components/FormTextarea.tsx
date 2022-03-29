@@ -1,13 +1,14 @@
 import type { FC, TextareaHTMLAttributes } from 'react';
 import FormLabel from './FormLabel';
-import { classNames, kebabCase } from '../utils';
+import { useInputId } from '../hooks';
+import { classNames } from '../utils';
 import styles from './FormTextarea.module.css';
 
 const FormTextarea: FC<TextareaHTMLAttributes<{}> & {
   label?: string;
   size?: 'small';
 }> = ({ className, label, id, size, ...props }) => {
-  const inputId = kebabCase(id ?? label);
+  const inputId = useInputId({id, label});
 
   return (
     <>

@@ -1,12 +1,13 @@
 import { type InputHTMLAttributes, type FC } from 'react';
 import FormLabel from './FormLabel';
-import { classNames, kebabCase } from '../utils';
+import { useInputId } from '../hooks';
+import { classNames } from '../utils';
 import styles from './FormInput.module.css';
 
 const FormInput: FC<InputHTMLAttributes<{}> & {
   label?: string;
 }> = ({ className, label, id, ...props }) => {
-  const inputId = kebabCase(id ?? label);
+  const inputId = useInputId({id, label});
 
   return (
     <>
