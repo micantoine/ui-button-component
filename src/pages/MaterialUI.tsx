@@ -17,8 +17,8 @@ const MaterialUI: FC = () => {
         </li>
         <li>
           <Button color="primary" variant="link" element={
-            <Link to={routes[RouteTypes.MATERIAL_UI_CARD].path}>
-              {routes[RouteTypes.MATERIAL_UI_CARD].title}
+            <Link to={routes[RouteTypes.MATERIAL_UI_PILL].path}>
+              {routes[RouteTypes.MATERIAL_UI_PILL].title}
             </Link>
           } />
         </li>

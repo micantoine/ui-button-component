@@ -1,0 +1,25 @@
+
+[
+   {
+    "id": "1",
+    "name": "Children",
+    "displayName": "",
+    "description": "",
+    "type": "node",
+    "control": "input",
+    "options": "",
+    "defaultValue": "",
+    "hidden": false
+  },
+  {
+    "id": "2",
+    "name": "Color",
+    "displayName": "",
+    "description": "",
+    "type": "one of",
+    "control": "select",
+    "options": "default, primary, secondary",
+    "defaultValue": "default",
+    "hidden": false
+  }
+]

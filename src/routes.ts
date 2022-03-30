@@ -2,7 +2,7 @@ export enum RouteTypes {
   HOME = 'HOME',
   MATERIAL_UI = 'MATERIAL_UI',
   MATERIAL_UI_BUTTON = 'MATERIAL_UI_BUTTON',
-  MATERIAL_UI_CARD = 'MATERIAL_UI_CARD',
+  MATERIAL_UI_PILL = 'MATERIAL_UI_PILL',
 }
 
 export type Route = { title: string; path: string; };
@@ -21,9 +21,9 @@ export const routes: Routes = {
     title: 'Button',
     path: '/material-ui/button'
   },
-  [RouteTypes.MATERIAL_UI_CARD]: {
-    title: 'Card',
-    path: '/material-ui/card'
+  [RouteTypes.MATERIAL_UI_PILL]: {
+    title: 'Pill',
+    path: '/material-ui/pill'
   },
 }
 

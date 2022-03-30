@@ -19,6 +19,7 @@
 }
 .noName {
   font-style: italic;
+  color: var(--color-danger);
 }
 
 .content {
