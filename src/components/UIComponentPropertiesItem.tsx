@@ -19,12 +19,10 @@ const UIComponentPropertiesItem: FC<{
   onChange: (payload: UI.Properties) => void;
   onRemove: (payload: string) => void;
 }> = ({data, onRemove, onChange }) => {
-  const [isHidden, setIsHidden] = useState(data.hidden);
   const [showMore, setShowMore] = useState(false);
 
   const handleVisibility = (status: boolean): void => {
     const newStatus = !status;
-    setIsHidden(newStatus);
     onChange({
       ...data,
       hidden: newStatus
@@ -42,7 +40,7 @@ const UIComponentPropertiesItem: FC<{
   return (
     <Container className={classNames([
       styles.item,
-      isHidden ? styles.hidden : undefined
+      data.hidden ? styles.hidden : undefined
     ])} ySpacing="small" size="md">
       <h3 className={styles.title}>
         <span className={classNames([

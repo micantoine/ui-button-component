@@ -27,7 +27,6 @@ const UIComponentPropertiesFields: FC<{
 
   useEffect(() => {
     setProperties(data);
-    console.log('props updated');
   }, [data]);
 
   const handleChange = (ev: ChangeEvent<ChangeEventType>): void => {

@@ -1,8 +1,12 @@
-import { type FC } from 'react';
+import { createContext, type FC } from 'react';
 import { Button, Layout } from '.';
 
+const formId = 'form-component-properties';
+export const PropertyContext = createContext({
+  formId,
+});
+
 const LayoutWithFormAction: FC = () => {
-  const formId = 'form-component';
   const actions = 
     <>
       <Button
@@ -19,7 +23,9 @@ const LayoutWithFormAction: FC = () => {
     </>;
 
    return (
-    <Layout actions={actions} />
+     <PropertyContext.Provider value={{formId}}>
+       <Layout actions={actions} />
+     </PropertyContext.Provider>
    );
 }
 

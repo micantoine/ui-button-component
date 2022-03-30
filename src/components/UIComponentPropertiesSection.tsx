@@ -1,6 +1,7 @@
-import { useEffect, useState, useReducer, type FC } from 'react';
+import { useEffect, useState, useReducer, useContext, type FC, FormEvent } from 'react';
 import * as UI from '../models/UIComponent';
 import { UIComponentForm, UIComponentPropertiesItem, Button, Icon, Spinner } from '../components';
+import { PropertyContext } from './LayoutWithFormAction';
 import Plus from '../assets/plus.svg';
 
 enum ReducerType {
@@ -43,15 +44,24 @@ const UIComponentPropertiesSection: FC<{
   data: UI.Properties[];
   isFetching: boolean;
 }> = (props) => {
+  const context = useContext(PropertyContext);
+  const [initialState, setInitialState] = useState(props.data);
   const [properties, dispatch] = useReducer(reducer, props.data);
   const [showNewForm, setShowNewForm] = useState(false);
 
   useEffect(() => {
     dispatch({ type: ReducerType.SET, payload: props.data});
+    setInitialState(props.data);
   }, [props.data]);
 
-  const handleCancel = (): void => {
+  const handleSubmit = (ev:FormEvent): void => {
+    ev.preventDefault();
+    console.log('onsubmit');
+  }
+  const handleReset = (ev:FormEvent): void => {
+    ev.preventDefault();
     setShowNewForm(false);
+    dispatch({ type: ReducerType.SET, payload: initialState });
   }
 
   return (
@@ -71,10 +81,10 @@ const UIComponentPropertiesSection: FC<{
       {showNewForm && <UIComponentForm
         data={new UI.Properties()}
         onSubmit={(payload) => dispatch({ type: ReducerType.ADD, payload})}
-        onCancel={handleCancel}
+        onCancel={() => setShowNewForm(false)}
       />}
 
-      <form>
+      <form id={context.formId} onSubmit={handleSubmit} onReset={handleReset}>
           {props.isFetching ? <Spinner /> : ''}
           {properties.map((d) =>
             <UIComponentPropertiesItem
