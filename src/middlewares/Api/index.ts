@@ -15,10 +15,12 @@ type ApiRequest = {
   error?: string
 };
 
-interface ApiRequestOptions {
+interface ApiMethodOptions {
+  data?: Record<string, any>;
+}
+interface ApiRequestOptions extends ApiMethodOptions {
   method: string;
 }
-
 class HTTP {
   protected getHeaders = (): HeadersInit => {
     const headers = new Headers({
@@ -40,8 +42,12 @@ class HTTP {
       headers: this.getHeaders(),
     };
 
+    if (opts.data) {
+      options.body = JSON.stringify(opts.data);
+    }
+
     // eslint-disable-next-line no-restricted-globals
-    const endpoint = `${location.origin}/data/${route}`;
+    const endpoint = `${location.origin}/data${route}`;
   
     try {
       const response = await fetch(endpoint, options);
@@ -76,6 +82,22 @@ class HTTP {
     route: T
   ): Promise<ApiResponse<ApiRouteResponse[T]>> => {
     const response = await this.request(route, { method: 'GET' });
+    return response;
+  };
+
+  /**
+   * Http PUT Method
+   */
+  public put = async <T extends ApiRouteTypes>(
+    route: T,
+    opts: ApiMethodOptions = {}
+  ): Promise<ApiResponse<ApiRouteResponse[T]>> => {
+    const options: ApiRequestOptions = {
+      method: 'PUT',
+      ...opts,
+    };
+
+    const response = await this.request(route, options);
     return response;
   };
 }
