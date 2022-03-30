@@ -19,7 +19,7 @@ export const PropertyControl = {
   ...PropertyNode
 };
 export class Properties {
-  public id?: number;
+  public id: string = '';
   public name: string = '';
   public displayName: string = '';
   public description: string = '';
@@ -27,6 +27,7 @@ export class Properties {
   public control: PropertyNode | PropertyOneOf | '' = '';
   public options: string = '';
   public defaultValue: string = '';
+  public hidden: boolean = false; 
 }
 
 export default Properties;
