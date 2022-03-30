@@ -28,6 +28,11 @@
   --link-hover-color: var(--text-color);
   --link-underline-color: rgba(var(--color-medium-rgb), 30%);
 
+  /* Font */
+  --font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
   /* Gutter */
   --gutter: 20px;
   --gutter-large: 43px;
@@ -50,9 +55,7 @@ html {
 }
 body {
   margin: 0;
-  font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: var(--font-family);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   height: 100%;
@@ -76,6 +79,9 @@ h2 {
 }
 h2 > *:first-child {
   margin-inline-start: 10px;
+}
+h3 {
+  font-size: 18px;
 }
 
 a {
