@@ -7,8 +7,8 @@ import styles from './FormTextarea.module.css';
 const FormTextarea: FC<TextareaHTMLAttributes<{}> & {
   label?: string;
   size?: 'small';
-}> = ({ className, label, id, size, ...props }) => {
-  const inputId = useInputId({id, label});
+}> = ({ className, label, size, ...props }) => {
+  const inputId = useInputId(label);
 
   return (
     <>

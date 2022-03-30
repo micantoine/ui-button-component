@@ -6,8 +6,8 @@ import styles from './FormInput.module.css';
 
 const FormInput: FC<InputHTMLAttributes<{}> & {
   label?: string;
-}> = ({ className, label, id, ...props }) => {
-  const inputId = useInputId({id, label});
+}> = ({ className, label, ...props }) => {
+  const inputId = useInputId(label);
 
   return (
     <>

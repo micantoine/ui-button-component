@@ -13,9 +13,9 @@ const FormSelect: FC<SelectHTMLAttributes<{}> & {
   label?: string;
   useEmpty?: boolean;
   options: SelectOption[] | string[] | number[];
-}> = ({ className, label, id, options, useEmpty, ...props }) => {
+}> = ({ className, label, options, useEmpty, ...props }) => {
 
-  const inputId = useInputId({id, label});
+  const inputId = useInputId(label);
 
   let optionList: SelectOption[];
 
