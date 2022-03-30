@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import { routes, RouteTypes } from './routes';
 import Home from './pages/Home';
-import { Layout, LayoutWithFormAction } from './components';
+import { Layout, LayoutWithFormAction, Spinner } from './components';
 
 const MaterialUI = React.lazy(() => import('./pages/MaterialUI'));
 const Button = React.lazy(() => import('./pages/Button'));
@@ -18,7 +18,7 @@ const App: FC = () => {
         <Route path={routes[RouteTypes.HOME].path} element={<Home />} />
         <Route path={routes[RouteTypes.MATERIAL_UI].path} element={<Layout />}>
           <Route index element={
-            <React.Suspense fallback={<>...</>}>
+            <React.Suspense fallback={<Spinner />}>
               <MaterialUI />
             </React.Suspense>
           } />
@@ -27,14 +27,14 @@ const App: FC = () => {
           <Route
             path={routes[RouteTypes.MATERIAL_UI_BUTTON].path}
             element={
-              <React.Suspense fallback={<>...</>}>
+              <React.Suspense fallback={<Spinner />}>
                 <Button />
               </React.Suspense>
             } />
           <Route
             path={routes[RouteTypes.MATERIAL_UI_CARD].path}
             element={
-              <React.Suspense fallback={<>...</>}>
+              <React.Suspense fallback={<Spinner />}>
                 <Card />
               </React.Suspense>
             } />
