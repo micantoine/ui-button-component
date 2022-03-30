@@ -15,17 +15,28 @@ import Trash from '../assets/trash.svg';
 import styles from './UIComponentPropertiesItem.module.css';
 
 const UIComponentPropertiesItem: FC<{
-  data: UI.Properties
-}> = ({data}) => {
+  data: UI.Properties;
+  onChange: (payload: UI.Properties) => void;
+  onRemove: (payload: string) => void;
+}> = ({data, onRemove, onChange }) => {
   const [isHidden, setIsHidden] = useState(data.hidden);
   const [showMore, setShowMore] = useState(false);
 
-  const handleChange = (payload: UI.Properties): void => {
+  const handleVisibility = (status: boolean): void => {
+    const newStatus = !status;
+    setIsHidden(newStatus);
+    onChange({
+      ...data,
+      hidden: newStatus
+    });
+  }
 
+  const handleChange = (payload: UI.Properties): void => {
+    onChange(payload)
   }
 
   const handleRemove = () => {
-
+    onRemove(data.id);
   }
 
   return (
@@ -38,7 +49,7 @@ const UIComponentPropertiesItem: FC<{
           styles.titleName,
           !data.name ? styles.noName : undefined
         ])}>{data.name ?? <>Unamed</>}</span>
-        <VisibilitySwitcher show={!data.hidden} onChange={(status) => setIsHidden(!status)} />
+        <VisibilitySwitcher show={!data.hidden} onChange={handleVisibility} />
         {showMore && <Button variant="icon" onClick={handleRemove}>
           <Icon src={Trash} />
         </Button>}

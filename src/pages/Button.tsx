@@ -26,11 +26,26 @@ const ButtonPage: FC = () => {
   }, []);
 
   const handleNew = (payload: UIComponent): void => {
-    console.log('handleNew created property', payload);
+    setData((state) => {
+      return [
+        ...state,
+        payload
+      ];
+    });
   }
 
   const handleChange = (payload: UIComponent): void => {
-    console.log('handle', payload);
+    setData((state) => {
+      return state.map((item) => {
+        return item.id === payload.id ? payload : item;
+      })
+    });
+  }
+
+  const handleRemoval = (id: string) => {
+    setData((state) => {
+      return state.filter((item) => item.id !== id);
+    });
   }
 
   return (
@@ -43,7 +58,12 @@ const ButtonPage: FC = () => {
 
         {isFetching ? <span>...</span> : ''}
         {data.map((d) =>
-          <UIComponentPropertiesItem data={d} key={d.id} />
+          <UIComponentPropertiesItem
+            data={d}
+            key={d.id}
+            onChange={handleChange}
+            onRemove={handleRemoval}
+          />
         )}
       </UIComponentPropertiesSection>
     </>
