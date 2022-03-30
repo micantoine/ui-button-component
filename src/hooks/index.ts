@@ -1,1 +1,1 @@
-export * from './useInputId';
+export * from './useUniqueId';
