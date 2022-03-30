@@ -26,7 +26,7 @@ const UIPropertiesForm: FC<{
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <Container ySpacing="small" size="md">
         <UIComponentPropertiesFields data={currentData} onChange={handleChange} />
 
