@@ -1,0 +1,34 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.item + .item {
+  border-top: 1px solid var(--border-color);
+}
+
+.title {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+}
+.titleName {
+  margin-right: 5px;
+}
+.noName {
+  font-style: italic;
+}
+
+.content {
+  display: flex;
+}
+.content fieldset {
+  border: none;
+}
+
+.hidden .titleName,
+.hidden fieldset {
+  opacity: 0.3;
+}

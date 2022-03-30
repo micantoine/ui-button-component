@@ -1,7 +1,11 @@
 import { useEffect, useState, type FC } from 'react';
 import { Api, ApiRouteTypes } from '../middlewares/Api';
 import UIComponent from '../models/UIComponent';
-import { UIPageTitle, UIComponentPropertiesSection, UIComponentPropertiesFields } from '../components';
+import {
+  UIPageTitle,
+  UIComponentPropertiesSection,
+  UIComponentPropertiesItem
+} from '../components';
 
 const ButtonPage: FC = () => {
   const [data, setData] = useState<UIComponent[]>([]);
@@ -30,19 +34,17 @@ const ButtonPage: FC = () => {
   }
 
   return (
-    <> {JSON.stringify(data)}
+    <>
       <UIPageTitle>Button</UIPageTitle>
       <h2>Component preview</h2>
       @todo
 
       <UIComponentPropertiesSection onCreate={handleNew}>
 
-
         {isFetching ? <span>...</span> : ''}
         {data.map((d) =>
-          <UIComponentPropertiesFields data={d} onChange={handleChange} key={d.id} />
+          <UIComponentPropertiesItem data={d} key={d.id} />
         )}
-
       </UIComponentPropertiesSection>
     </>
   );

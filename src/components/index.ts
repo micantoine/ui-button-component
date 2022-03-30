@@ -15,5 +15,6 @@ export { default as Tip } from './Tip';
 export { default as UIPageTitle } from './UIPageTitle';
 export { default as UIComponentForm } from './UIComponentForm';
 export { default as UIComponentPropertiesFields } from './UIComponentPropertiesFields';
+export { default as UIComponentPropertiesItem } from './UIComponentPropertiesItem';
 export { default as UIComponentPropertiesSection } from './UIComponentPropertiesSection';
 export { default as VisibilitySwitcher } from './VisibilitySwitcher';

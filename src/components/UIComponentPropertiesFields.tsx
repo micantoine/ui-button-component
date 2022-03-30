@@ -1,7 +1,6 @@
 import { type ChangeEvent, useState, useEffect, type FC } from 'react';
 import { FormInput, FormTextarea, FormSelect, FormToggle, Tip } from '.';
 import * as UI from '../models/UIComponent';
-
 import styles from './UIComponentPropertiesFields.module.css';
 
 type ChangeEventType = HTMLInputElement|HTMLTextAreaElement|HTMLSelectElement;
