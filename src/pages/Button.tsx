@@ -6,6 +6,7 @@ import {
   UIPageTitle,
   UIComponentPropertiesSection,
 } from '../components';
+import { delay } from '../utils';
 
 const ButtonPage: FC = () => {
   const ctx = useContext(PropertyContext);
@@ -28,6 +29,8 @@ const ButtonPage: FC = () => {
 
   const handleSaving = async (payload: UIComponent[]): Promise<void> => {
     ctx.dispatch({type: PropertyCxtActionType.SEND});
+    // use dummy delay to mimic as a demo
+    await delay(1000);
     const response = await Api.put(ApiRouteTypes.BUTTON, {
       data: payload
     });
