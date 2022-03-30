@@ -5,6 +5,7 @@ import { classNames } from '../utils';
 import Button from './Button';
 import Breadcrumb from './Breadcrumb';
 import Icon from './Icon';
+import Tooltip from './Tooltip';
 import styles from './HeaderToolbar.module.css';
 import DashboardIcon from '../assets/layout-medium-tile-outline.svg'; 
 
@@ -25,10 +26,12 @@ const HeaderToolbar: FC<HTMLAttributes<{}> & {
       className
     ])} {...props}>
       <div className={styles.dashboard}>
-        <Button
-          element={DashBoardLink}
-          variant="icon"
-        />
+        <Tooltip info="Open Dashboard">
+          <Button
+            element={DashBoardLink}
+            variant="icon"
+          />
+        </Tooltip>
       </div>
       <div className={styles.breadcrumb}>
         <Breadcrumb />

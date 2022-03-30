@@ -5,6 +5,7 @@ import {
   Icon,
   Button,
   Container,
+  Tooltip,
   VisibilitySwitcher
 } from '.';
 import { classNames } from '../utils';
@@ -47,10 +48,16 @@ const UIComponentPropertiesItem: FC<{
           styles.titleName,
           !data.name ? styles.noName : undefined
         ])}>{data.name || <>Unamed</>}</span>
-        <VisibilitySwitcher show={!data.hidden} onChange={handleVisibility} />
-        {showMore && <Button variant="icon" onClick={handleRemove}>
-          <Icon src={Trash} />
-        </Button>}
+        <Tooltip info={!data.hidden ? 'Hide property' : 'Show property'}>
+          <VisibilitySwitcher show={!data.hidden} onChange={handleVisibility} />
+        </Tooltip>
+        {showMore && 
+          <Tooltip info="Delete property">
+            <Button variant="icon" onClick={handleRemove}>
+              <Icon src={Trash} />
+            </Button>
+          </Tooltip>
+        }
       </h3>
       <div className={styles.content}>
         <fieldset>

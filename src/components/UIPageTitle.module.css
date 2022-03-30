@@ -4,5 +4,8 @@
 }
 
 .title > *:first-child {
-  margin-left: 12px;
+  display: inline-flex;
+}
+.title > * {
+  display: inline-flex;
 }

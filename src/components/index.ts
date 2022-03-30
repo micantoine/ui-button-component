@@ -13,6 +13,7 @@ export { default as LayoutWithFormAction } from './LayoutWithFormAction';
 export { default as MainContent } from './MainContent';
 export { default as Spinner } from './Spinner';
 export { default as Tip } from './Tip';
+export { default as Tooltip } from './Tooltip';
 export { default as UIPageTitle } from './UIPageTitle';
 export { default as UIComponentForm } from './UIComponentForm';
 export { default as UIComponentPropertiesFields } from './UIComponentPropertiesFields';
