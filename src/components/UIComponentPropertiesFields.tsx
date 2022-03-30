@@ -85,7 +85,6 @@ const UIComponentPropertiesFields: FC<{
       {properties.type !== UI.PropertyType.Boolean &&
         <div className={styles.group}>
           <FormSelect
-
             label="Property control"
             name="control"
             value={properties.control}
@@ -93,6 +92,15 @@ const UIComponentPropertiesFields: FC<{
             useEmpty={!properties.type}
             onChange={handleChange}
           />
+          {properties.control === UI.PropertyControl.Textarea &&
+            <FormInput
+              placeholder="rows"
+              name="options"
+              value={properties.options}
+              size={4}
+              onChange={handleChange}
+            />
+          }
           <Tip size="small">(type of control displayed in editor's properties panel.  <a href="/#" title="Learn more">Learn more</a> about control types)</Tip>
         </div>
       }

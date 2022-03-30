@@ -9,6 +9,12 @@
   box-shadow: none;
   appearance: none;
 }
+.input::placeholder {
+  color: var(--input-placeholder-color);
+}
+.input[size] {
+  min-width: auto;
+}
 .input:focus {
   outline: none;
 }
