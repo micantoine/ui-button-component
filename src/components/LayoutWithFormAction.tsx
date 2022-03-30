@@ -1,31 +1,34 @@
-import { createContext, type FC } from 'react';
-import { Button, Layout } from '.';
+import { useContext, type FC } from 'react';
+import { PropertyContext, PropertyProvider } from '../contexts/PropertyProvider';
+import { Button, Layout, Spinner } from '.';
 
-const formId = 'form-component-properties';
-export const PropertyContext = createContext({
-  formId,
-});
 
-const LayoutWithFormAction: FC = () => {
-  const actions = 
+const ActionButtons: FC = () => {
+  const cxt = useContext(PropertyContext);
+
+  return (
     <>
       <Button
         variant="link"
         type="reset"
-        form={formId}
+        form={cxt.state.formId}
       >Discard changes</Button>
       <Button
         size="small"
         color="primary"
         type="submit"
-        form={formId}
-      >Save changes</Button>
-    </>;
+        form={cxt.state.formId}
+        disabled={cxt.state.sending}
+      >Save changes {cxt.state.sending && <Spinner/>}</Button>
+    </>
+  )
+}
 
+const LayoutWithFormAction: FC = () => {
    return (
-     <PropertyContext.Provider value={{formId}}>
-       <Layout actions={actions} />
-     </PropertyContext.Provider>
+     <PropertyProvider>
+       <Layout actions={<ActionButtons />} />
+     </PropertyProvider>
    );
 }
 
