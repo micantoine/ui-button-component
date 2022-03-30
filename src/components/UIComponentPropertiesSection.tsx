@@ -1,7 +1,7 @@
 import { useEffect, useState, useReducer, useContext, type FC, FormEvent } from 'react';
 import * as UI from '../models/UIComponent';
 import { UIComponentForm, UIComponentPropertiesItem, Button, Icon, Spinner } from '../components';
-import { PropertyContext } from './LayoutWithFormAction';
+import { PropertyContext } from '../contexts/PropertyProvider';
 import Plus from '../assets/plus.svg';
 
 enum ReducerType {
@@ -43,6 +43,7 @@ const reducer = (
 const UIComponentPropertiesSection: FC<{
   data: UI.Properties[];
   isFetching: boolean;
+  onSave: (payload: UI.Properties[]) => void;
 }> = (props) => {
   const context = useContext(PropertyContext);
   const [initialState, setInitialState] = useState(props.data);
@@ -56,7 +57,7 @@ const UIComponentPropertiesSection: FC<{
 
   const handleSubmit = (ev:FormEvent): void => {
     ev.preventDefault();
-    console.log('onsubmit');
+    props.onSave(properties);
   }
   const handleReset = (ev:FormEvent): void => {
     ev.preventDefault();
@@ -84,7 +85,7 @@ const UIComponentPropertiesSection: FC<{
         onCancel={() => setShowNewForm(false)}
       />}
 
-      <form id={context.formId} onSubmit={handleSubmit} onReset={handleReset}>
+      <form id={context.state.formId} onSubmit={handleSubmit} onReset={handleReset}>
           {props.isFetching ? <Spinner /> : ''}
           {properties.map((d) =>
             <UIComponentPropertiesItem
