@@ -4,7 +4,6 @@ import UIComponent from '../models/UIComponent';
 import {
   UIPageTitle,
   UIComponentPropertiesSection,
-  UIComponentPropertiesItem
 } from '../components';
 
 const ButtonPage: FC = () => {
@@ -25,47 +24,16 @@ const ButtonPage: FC = () => {
     fetchData();
   }, []);
 
-  const handleNew = (payload: UIComponent): void => {
-    setData((state) => {
-      return [
-        ...state,
-        payload
-      ];
-    });
-  }
-
-  const handleChange = (payload: UIComponent): void => {
-    setData((state) => {
-      return state.map((item) => {
-        return item.id === payload.id ? payload : item;
-      })
-    });
-  }
-
-  const handleRemoval = (id: string) => {
-    setData((state) => {
-      return state.filter((item) => item.id !== id);
-    });
-  }
-
   return (
     <>
       <UIPageTitle>Button</UIPageTitle>
       <h2>Component preview</h2>
       @todo
 
-      <UIComponentPropertiesSection onCreate={handleNew}>
-
-        {isFetching ? <span>...</span> : ''}
-        {data.map((d) =>
-          <UIComponentPropertiesItem
-            data={d}
-            key={d.id}
-            onChange={handleChange}
-            onRemove={handleRemoval}
-          />
-        )}
-      </UIComponentPropertiesSection>
+      <UIComponentPropertiesSection
+        data={data}
+        isFetching={isFetching}
+      />
     </>
   );
 }

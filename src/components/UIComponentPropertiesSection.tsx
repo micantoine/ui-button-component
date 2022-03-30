@@ -1,15 +1,40 @@
-import { useState, type FC } from 'react';
+import { useEffect, useState, type FC } from 'react';
 import * as UI from '../models/UIComponent';
-import { UIComponentForm, Button, Icon } from '../components';
+import { UIComponentForm, UIComponentPropertiesItem, Button, Icon, Spinner } from '../components';
 import Plus from '../assets/plus.svg';
 
 const UIComponentPropertiesSection: FC<{
-  onCreate: (payload: UI.Properties) => void;
+  data: UI.Properties[];
+  isFetching: boolean;
 }> = (props) => {
+  const [properties, setProperties] = useState(props.data);
   const [showNewForm, setShowNewForm] = useState(false);
 
-  const handleSubmit = (payload: UI.Properties): void => {
-    props.onCreate(payload);
+  useEffect(() => {
+    setProperties(props.data);
+  }, [props.data]);
+
+  const handleNew = (payload: UI.Properties): void => {
+    setProperties((state) => {
+      return [
+        ...state,
+        payload
+      ];
+    });
+  }
+
+  const handleChange = (payload: UI.Properties): void => {
+    setProperties((state) => {
+      return state.map((item) => {
+        return item.id === payload.id ? payload : item;
+      })
+    });
+  }
+
+  const handleRemoval = (id: string) => {
+    setProperties((state) => {
+      return state.filter((item) => item.id !== id);
+    });
   }
 
   const handleCancel = (): void => {
@@ -32,11 +57,21 @@ const UIComponentPropertiesSection: FC<{
 
       {showNewForm && <UIComponentForm
         data={new UI.Properties()}
-        onSubmit={handleSubmit}
+        onSubmit={handleNew}
         onCancel={handleCancel}
       />}
 
-      {props.children}
+      <form>
+          {props.isFetching ? <Spinner /> : ''}
+          {properties.map((d) =>
+            <UIComponentPropertiesItem
+              data={d}
+              key={d.id}
+              onChange={handleChange}
+              onRemove={handleRemoval}
+            />
+          )}
+        </form>
     </section>
   );
 }

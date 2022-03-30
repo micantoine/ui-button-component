@@ -48,7 +48,7 @@ const UIComponentPropertiesItem: FC<{
         <span className={classNames([
           styles.titleName,
           !data.name ? styles.noName : undefined
-        ])}>{data.name ?? <>Unamed</>}</span>
+        ])}>{data.name || <>Unamed</>}</span>
         <VisibilitySwitcher show={!data.hidden} onChange={handleVisibility} />
         {showMore && <Button variant="icon" onClick={handleRemove}>
           <Icon src={Trash} />

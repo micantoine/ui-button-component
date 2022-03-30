@@ -1,4 +1,4 @@
 .main {
-  padding-left: var(--gutter-large);
-  padding-right: var(--gutter-large);
+  margin-left: var(--gutter-large);
+  margin-right: var(--gutter-large);
 }
