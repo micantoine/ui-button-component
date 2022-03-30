@@ -1,13 +1,13 @@
 import { type InputHTMLAttributes, type FC } from 'react';
 import FormLabel from './FormLabel';
-import { useInputId } from '../hooks';
+import { useUniqueId } from '../hooks';
 import { classNames } from '../utils';
 import styles from './FormInput.module.css';
 
 const FormInput: FC<InputHTMLAttributes<{}> & {
   label?: string;
 }> = ({ className, label, ...props }) => {
-  const inputId = useInputId(label);
+  const inputId = useUniqueId(label);
 
   return (
     <>

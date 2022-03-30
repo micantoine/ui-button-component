@@ -1,7 +1,7 @@
 import { type FC, SelectHTMLAttributes } from 'react';
 import FormLabel from './FormLabel';
-import { useInputId } from '../hooks';
-import { classNames, kebabCase } from '../utils';
+import { useUniqueId } from '../hooks';
+import { classNames } from '../utils';
 import styles from './FormSelect.module.css';
 
 export interface SelectOption {
@@ -13,38 +13,40 @@ const FormSelect: FC<SelectHTMLAttributes<{}> & {
   label?: string;
   useEmpty?: boolean;
   options: SelectOption[] | string[] | number[];
-}> = ({ className, label, options, useEmpty, ...props }) => {
+}> = ({ className, label, options, useEmpty, value, ...props }) => {
+  const inputId = useUniqueId(label);
 
-  const inputId = useInputId(label);
-
-  let optionList: SelectOption[];
+  let optionList: SelectOption[] = [];
 
   if (typeof options[0] !== 'object') {
-    optionList = options.map((opt) => ({ value: opt })) as SelectOption[];
+    optionList = options.map((opt) => ({
+      value: typeof opt === 'number' ? opt : opt.toString().trim()
+    })) as SelectOption[];
   } else {
     optionList = options as SelectOption[];
   }
-
+  
   return (
     <>
       {label && <FormLabel htmlFor={inputId}>{label}</FormLabel>}
-      <select
+      {optionList.length > 0 && <select
         className={classNames([
           styles.select,
           label ? styles.hasLabel : undefined,
           className
         ])}
         id={inputId}
+        defaultValue={value}
         {...props}
       >
         {useEmpty && <option disabled></option>}
-        {optionList && optionList.map((opt) =>
+        {optionList.map((opt) =>
           <option
-            key={kebabCase(opt.value?.toString())}
+            key={opt.value}
             value={opt.value}
-          >{opt.label ?? opt.value}</option>
+          >{opt.label ?? opt.value}{value}</option>
         )}
-      </select>
+      </select>}
     </>
   );
 }
