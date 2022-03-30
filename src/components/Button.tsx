@@ -52,6 +52,7 @@ const Button: FC<ButtonHTMLAttributes<{}> & {
       className={classNames(classes)}
       type={props.type ?? 'button'}
       form={props.form}
+      style={props.style}
       onClick={props.onClick}
     >{updatedChildren || props.children}</button>;
 

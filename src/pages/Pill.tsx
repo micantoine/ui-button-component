@@ -24,6 +24,10 @@ const PillPage: FC = () => {
     fetchData();
   }, []);
 
+  const handleSaving = (payload: UIComponent[]):void => {
+    console.log(payload);
+  }
+
   return (
     <>
       <UIPageTitle>Pill</UIPageTitle>
@@ -33,6 +37,7 @@ const PillPage: FC = () => {
       <UIComponentPropertiesSection
         data={data}
         isFetching={isFetching}
+        onSave={handleSaving}
       />
     </>
   );

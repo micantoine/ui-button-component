@@ -1,5 +1,6 @@
-import { useEffect, useState, type FC } from 'react';
+import { useEffect, useState, useContext, type FC } from 'react';
 import { Api, ApiRouteTypes } from '../middlewares/Api';
+import { PropertyContext, PropertyCxtActionType } from '../contexts/PropertyProvider';
 import UIComponent from '../models/UIComponent';
 import {
   UIPageTitle,
@@ -7,6 +8,7 @@ import {
 } from '../components';
 
 const ButtonPage: FC = () => {
+  const ctx = useContext(PropertyContext);
   const [data, setData] = useState<UIComponent[]>([]);
   const [isFetching, setIsFetching] = useState(true);
 
@@ -24,6 +26,17 @@ const ButtonPage: FC = () => {
     fetchData();
   }, []);
 
+  const handleSaving = async (payload: UIComponent[]): Promise<void> => {
+    ctx.dispatch({type: PropertyCxtActionType.SEND});
+    const response = await Api.put(ApiRouteTypes.BUTTON, {
+      data: payload
+    });
+    ctx.dispatch({type: PropertyCxtActionType.DID_SEND});
+    if (!response.success) {
+      throw new Error(response.error);
+    }
+  }
+
   return (
     <>
       <UIPageTitle>Button</UIPageTitle>
@@ -33,6 +46,7 @@ const ButtonPage: FC = () => {
       <UIComponentPropertiesSection
         data={data}
         isFetching={isFetching}
+        onSave={handleSaving}
       />
     </>
   );
