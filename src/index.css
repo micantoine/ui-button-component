@@ -55,13 +55,13 @@
 
 html {
   height: 100%;
+  background-color: var(--background-color);
 }
 body {
   margin: 0;
   font-family: var(--font-family);
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-  height: 100%;
   color: var(--text-color);
   background-color: var(--background-color);
 }
@@ -94,4 +94,8 @@ a {
 }
 a:hover {
   --link-color: var(--link-hover-color);
+}
+
+li {
+  margin-bottom: 6px;
 }
