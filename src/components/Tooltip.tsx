@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useRef, type FC, type CSSProperties, type RefObject, useState } from 'react';
+import { useState, useEffect, useCallback, useRef, type FC, type CSSProperties } from 'react';
 import styles from './Tooltip.module.css';
 
 const Tooltip: FC<{ info: string | JSX.Element }> = (props) => {
@@ -10,48 +10,41 @@ const Tooltip: FC<{ info: string | JSX.Element }> = (props) => {
     const [infoStyle, setInfoStyle] = useState<CSSProperties>({});
 
     const hide = useCallback(() => {
-      setInfoStyle((state) => ({
-        ...state,
-        display: 'none'
-      }));
-      setArrowStyle((state) => ({
-        ...state,
-        display: 'none'
-      }));
+      setInfoStyle((state) => ({...state, display: 'none'}));
+      setArrowStyle((state) => ({...state, display: 'none'}));
     }, []);
 
-    const offset = useCallback(
-      (element: RefObject<HTMLElement>): {top: number; left: number} => {
-      if (!element.current) {
+    const offset = useCallback((): {top: number; left: number} =>{
+      if (!infoEl.current) {
         return { top:0, left: 0}
       }
-      const rect = element.current.getBoundingClientRect();
+      const rect = infoEl.current.getBoundingClientRect();
       return {
         top: rect.top + document.body.scrollTop,
         left: rect.left + document.body.scrollLeft
       }
     }, []);
 
-    const alignToLeftInner = useCallback(
-      (offsetLeft: number) => {
-        setInfoStyle((state) => ({
-          ...state,
-          width: `${document.body.offsetWidth}px`,
-          marginLeft: `-${offsetLeft}px`
-        })); 
-    },[]);
+    const alignToLeftInner = useCallback(() => {
+      const offsetLeft = offset().left;
+      setInfoStyle((state) => ({
+        ...state,
+        width: `${document.body.offsetWidth}px`,
+        marginLeft: `-${offsetLeft}px`
+      })); 
+    },[offset]);
 
-    const alignToLeft = useCallback(
-      (offsetLeft: number) => {
+    const alignToLeft = useCallback(() => {
+      const offsetLeft = offset().left;
       if (document.body.offsetLeft > offsetLeft) {
         setInfoStyle((state) => ({
           ...state,
           left: 0,
           right: 'auto',
         }));
-        alignToLeftInner(offsetLeft);
+        alignToLeftInner();
       }
-    }, [alignToLeftInner]);
+    }, [alignToLeftInner, offset]);
 
     const adjustPosition = useCallback(async () => {
       setArrowStyle((state) => ({
@@ -63,17 +56,17 @@ const Tooltip: FC<{ info: string | JSX.Element }> = (props) => {
         display: 'block',
       }));
 
-      if (document.body.offsetLeft > offset(infoEl).left) {
+      if (document.body.offsetLeft > offset().left) {
         setInfoStyle((state) => ({
           ...state,
           left: '0',
           transform: 'none',
         }));
 
-        if (document.body.offsetWidth < (offset(infoEl).left + (infoEl.current?.offsetWidth ?? 0))) {
-          alignToLeftInner(offset(infoEl).left)
+        if (document.body.offsetWidth < (offset().left + (infoEl.current?.offsetWidth ?? 0))) {
+          alignToLeftInner()
         }
-      } else if (document.body.offsetWidth < (offset(infoEl).left +(infoEl.current?.offsetWidth ?? 0))) {
+      } else if (document.body.offsetWidth < (offset().left +(infoEl.current?.offsetWidth ?? 0))) {
         setInfoStyle((state) => ({
           ...state,
           right: '0',
@@ -81,16 +74,7 @@ const Tooltip: FC<{ info: string | JSX.Element }> = (props) => {
           transform: 'none',
         }));
 
-        infoEl.current?.classList.add('right-limit');
-
-        alignToLeft(offset(infoEl).left);
-      } else if (infoEl.current?.classList.contains('right-limit')) {
-        setInfoStyle((state) => ({
-          ...state,
-          right: '0',
-          left: 'auto',
-        }));
-        alignToLeft(offset(el).left);
+        alignToLeft();
       }
     }, [alignToLeft, alignToLeftInner, offset]);
 
