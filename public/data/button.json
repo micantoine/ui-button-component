@@ -1,0 +1,101 @@
+[
+  {
+    "id": "1",
+    "name": "Color",
+    "displayName": "",
+    "description": "",
+    "type": "one of",
+    "control": "select",
+    "options": "default, inherit, primary, secondary",
+    "defaultValue": "primary",
+    "hidden": false
+  },
+  {
+    "id": "2",
+    "name": "Children",
+    "displayName": "",
+    "description": "",
+    "type": "node",
+    "control": "textarea",
+    "options": "",
+    "defaultValue": "primary",
+    "hidden": false
+  },
+  {
+    "id": "3",
+    "name": "Disabled",
+    "displayName": "",
+    "description": "",
+    "type": "boolean",
+    "control": "",
+    "options": "",
+    "defaultValue": "1",
+    "hidden": false
+  },
+  {
+    "id": "4",
+    "name": "Disable focus ripple",
+    "displayName": "",
+    "description": "",
+    "type": "boolean",
+    "control": "",
+    "options": "",
+    "defaultValue": "1",
+    "hidden": true
+  },
+  {
+    "id": "5",
+    "name": "Disable ripple",
+    "displayName": "",
+    "description": "",
+    "type": "boolean",
+    "control": "",
+    "options": "",
+    "defaultValue": "1",
+    "hidden": true
+  },
+  {
+    "id": "6",
+    "name": "Full width",
+    "displayName": "",
+    "description": "",
+    "type": "boolean",
+    "control": "",
+    "options": "",
+    "defaultValue": "1",
+    "hidden": false
+  },
+  {
+    "id": "7",
+    "name": "Mini",
+    "displayName": "",
+    "description": "",
+    "type": "boolean",
+    "control": "",
+    "options": "",
+    "defaultValue": "1",
+    "hidden": false
+  },
+  {
+    "id": "8",
+    "name": "Size",
+    "displayName": "",
+    "description": "",
+    "type": "one of",
+    "control": "select",
+    "options": "default, small, medium, large",
+    "defaultValue": "large",
+    "hidden": false
+  },
+  {
+    "id": "9",
+    "name": "Variant",
+    "displayName": "",
+    "description": "",
+    "type": "one of",
+    "control": "select",
+    "options": "default, text, outlined, contained",
+    "defaultValue": "contained",
+    "hidden": false
+  }
+]

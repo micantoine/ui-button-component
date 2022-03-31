@@ -1,0 +1,12 @@
+.form {
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+.actions {
+  display: block;
+  text-align: right;
+}
+
+.actions > *:first-child {
+  margin-right: 16px;
+}

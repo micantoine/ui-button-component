@@ -1,0 +1,101 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+
+:root {
+  --color-primary: #006cff;
+  --color-primary-rgb: 0, 108, 255;
+  --color-primary-contrast: #ffffff;
+
+  --color-danger: #e20c00;
+  --color-danger-rgb: 226, 12, 0;
+  --color-danger-contrast: #ffffff;
+
+  --color-medium-light: #777777;
+  --color-medium-light-rgb: 119, 119, 119;
+
+  --color-medium: #5e5e5e;
+  --color-medium-rgb: 94, 94, 94;
+
+  --background-color: #ffffff;
+  --background-color-rgba: 255, 255, 255;
+
+  --text-color: #373737;
+  --text-color-rgb: 55, 55, 55;
+
+  --border-color:#e6e6e6;
+  --border-color-rgb:230, 230, 230;
+
+  --link-color: var(--color-medium);
+  --link-hover-color: var(--text-color);
+  --link-underline-color: rgba(var(--color-medium-rgb), 30%);
+
+  /* Font */
+  --font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+
+  /* Gutter */
+  --gutter: 20px;
+  --gutter-large: 43px;
+
+  /* Form */
+  --input-font-size: 14px;
+  --input-color: var(--color-medium);
+  --input-background-color: var(--background-color);
+  --input-border-color: var(--border-color);
+  --input-placeholder-color: #d9d9d9;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  background-color: var(--background-color);
+}
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  color: var(--text-color);
+  background-color: var(--background-color);
+}
+
+h1 {
+  margin-block-start: 1em;
+  margin-block-end: 0.8em;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+h2 {
+  margin-block-end: 0.65em;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+h2 > *:first-child {
+  margin-inline-start: 10px;
+}
+h3 {
+  font-size: 18px;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  border-bottom: 1px solid var(--link-underline-color);
+}
+a:hover {
+  --link-color: var(--link-hover-color);
+}
+
+li {
+  margin-bottom: 6px;
+}

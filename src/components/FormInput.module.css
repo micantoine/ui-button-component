@@ -1,0 +1,24 @@
+.input {
+  height: 24px;
+  min-width: 230px;
+  font-size: var(--input-font-size);
+  color: var(--input-color);
+  background-color: var(--input-background-color);
+  border: none;
+  border-bottom: 1px solid var(--input-border-color);
+  box-shadow: none;
+  appearance: none;
+}
+.input::placeholder {
+  color: var(--input-placeholder-color);
+}
+.input[size] {
+  min-width: auto;
+}
+.input:focus {
+  outline: none;
+}
+
+.hasLabel {
+  margin-left: var(--gutter);
+}

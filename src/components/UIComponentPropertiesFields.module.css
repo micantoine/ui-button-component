@@ -1,0 +1,9 @@
+.group {
+  display: block;
+  margin-bottom: 12px;
+}
+.group > select + select,
+.group > select + input,
+.group > input + input {
+  margin-left: 10px;
+}

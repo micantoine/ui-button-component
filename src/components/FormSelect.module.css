@@ -1,0 +1,21 @@
+.select {
+  padding-right: 16px;
+  height: 24px;
+  width: 118px;
+  font-size: var(--input-font-size);
+  color: var(--input-color);
+  background-color: var(--input-background-color);
+  background: var(--input-background-color) url('../assets/chevron.svg') no-repeat right center;
+  border:none;
+  border-bottom: 1px solid var(--input-border-color);
+  box-shadow: none;
+  appearance: none;
+}
+
+.select:focus {
+  outline: none;
+}
+
+.hasLabel {
+  margin-left: var(--gutter);
+}

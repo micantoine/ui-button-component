@@ -1,0 +1,9 @@
+:root {
+  --label-color: var(--color-medium);
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--label-color);
+}

@@ -1,0 +1,61 @@
+
+:root {
+  --toggle-input-color: #515151;
+  --toggle-input-background-color: #f0f0f0;
+  --toggle-input-checked-background-color: #ffffff;
+}
+
+.toggle {
+  position: relative;
+  display: inline-flex;
+  color: var(--toggle-input-color);
+  background-color: var(--toggle-input-background-color);
+  border: 1px solid var(--input-border-color);
+}
+
+.toggle input {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+  width: 50%;
+  height: 100%;
+  z-index: 2;
+}
+
+.inputTrue {
+  left: 0;
+}
+.inputFalse {
+  right: 0;
+}
+
+.toggle label {
+  position: relative;
+  padding: 3px 10px;
+  text-align: center;
+  font-size: 14px;
+  min-width: 60px;
+  min-height: 24px;
+}
+
+.labelTrue::after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  content: '';
+  display: inline-flex;
+  width: 1px;
+  height: 100%;
+  background-color: var(--input-border-color);
+  transform: translateX(50%);
+}
+
+.inputTrue:checked + .labelTrue,
+.inputFalse:checked + .labelFalse {
+  background-color: var(--toggle-input-checked-background-color);
+}
+
+.hasLabel {
+  margin-left: var(--gutter);
+}
