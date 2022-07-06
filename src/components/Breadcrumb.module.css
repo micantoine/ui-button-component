@@ -12,6 +12,9 @@
   list-style: none;
   font-size: 15px;
 }
+.list li {
+  margin-bottom: 0;
+}
 .list li:not(:first-child) ::before {
   padding-left: 3px;
   padding-right: 3px;
